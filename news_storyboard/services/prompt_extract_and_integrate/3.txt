@@ -1,0 +1,40 @@
+# Step 4
+
+Integrate the facts in `fact list 1`. Write a news article as thorough as you can based on the facts in `fact list 1`. Change the order of the facts if needed to improve the flow. Then, generate a suitable title for the article. The news article and its title have to be in the same language as the facts.
+
+Please provide your response strictly in the following JSON format:
+{
+    'title': 'xxxxx',
+    'content': 'xxxxx'
+}
+
+# Step 5
+
+Categorize the news into one of the following categories: Business, Entertainment, General, Health, Science, Sports, Technology.
+
+Categories:
+- Business: News related to finance, economy, markets, companies, and industries.
+- Entertainment: News related to movies, music, celebrities, television, and cultural events.
+- General: News that doesn't fit into the other specific categories; can include politics, local news, etc.
+- Health: News related to health, wellness, medicine, and healthcare.
+- Science: News related to scientific discoveries, research, and technology advancements.
+- Sports: News related to sports events, teams, athletes, and competitions.
+- Technology: News related to technological innovations, gadgets, software, and the tech industry.
+
+Examples:
+- Input: "Apple announces new iPhone with groundbreaking features.", Category: Technology
+- Input: "The stock market hits an all-time high amid economic recovery.", Category: Business
+- Input: "New study shows benefits of a plant-based diet.", Category: Health
+- Input: "Oscars 2024: A night of surprises and memorable moments.", Category: Entertainment
+- Input: "NASA's new rover sends back stunning images from Mars.", Category: Science
+- Input: "The local community garden project brings neighbors together.", Category: General
+- Input: "Olympic Games 2024: A preview of the upcoming events.", Category: Sports
+
+Please provide your response strictly in the following JSON format:
+{
+    'title': 'xxxxx',
+    'content': 'xxxxx',
+    'category': 'xxxxx'
+}
+
+Don't display ```json.

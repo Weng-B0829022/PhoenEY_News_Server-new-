@@ -1,0 +1,3 @@
+newspaper3k
+python-dotenv
+openai

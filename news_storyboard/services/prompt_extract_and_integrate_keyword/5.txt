@@ -1,0 +1,41 @@
+Create news storyboard for the given article.
+
+The storyboard should include:
+- A total duration of 2 minutes
+- A maximum of 10 segments
+- A serial number for each segment
+- A timeline in the format [start time --> end time] (Ensure that the length of the timelines vary as needed.)
+- Description of the image or video to be shown. Varying images and videos as needed, with some segments possibly using the same image or video
+- Voiceover text for each segment
+- The voiceover text language should match the news event language
+
+Example storyboard:
+1
+00:00:00,000 --> 00:00:06,000
+Image: A wide shot of the new community park
+Voiceover Text: "Today marks the grand opening of the new community park in the city center."
+
+2
+00:00:06,000 --> 00:00:12,000
+Video: Footage of the playground with children playing
+Voiceover Text: "The park features a modern playground that has quickly become a favorite among children."
+
+3
+00:00:12,000 --> 00:00:17,000
+Image: The walking trail winding through the park
+Voiceover Text: "For those looking to enjoy a peaceful walk, the park offers a scenic walking trail."
+
+4
+00:00:17,000 --> 00:00:22,000
+Video: The mayor cutting the ribbon at the inauguration ceremony
+Voiceover Text: "The mayor officially inaugurated the park with a ribbon-cutting ceremony."
+
+5
+00:00:22,000 --> 00:00:27,000
+Image: Children and families gathered around the small lake
+Voiceover Text: "Families are already enjoying the serene environment around the park's small lake."
+
+6
+00:00:27,000 --> 00:00:32,000
+Video: The mayor giving a speech
+Voiceover Text: "In her speech, the mayor emphasized the importance of such community spaces for fostering social connections and promoting a healthy lifestyle."

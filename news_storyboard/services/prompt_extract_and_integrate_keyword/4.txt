@@ -1,0 +1,39 @@
+Types of derivative news articles:
+1. **Economic Impact Analysis**: Analyzing the economic repercussions of the original news on local, national, and global markets.
+2. **Sociological Perspective**: Exploring the social implications and how different demographics are affected by the news.
+3. **Political Commentary**: Offering insights and opinions on the political ramifications and policy changes resulting from the news.
+4. **Legal Analysis**: Examining the legal aspects, including any potential litigation, regulatory changes, or legal precedents set by the news.
+5. **Environmental Impact**: Assessing the environmental consequences and sustainability concerns related to the news.
+6. **Public Health Analysis**: Focusing on the public health implications and the impact on healthcare systems and policies.
+7. **Technological Perspective**: Discussing the role of technology in the news event and future technological advancements.
+8. **Historical Context**: Placing the news within a historical framework and comparing it to similar past events.
+9. **Cultural Analysis**: Exploring the cultural impact and how the news affects cultural norms and practices.
+10. **International Relations**: Analyzing the news from an international perspective, including its impact on global relations and diplomacy.
+11. **Ethical Considerations**: Discussing the ethical implications and moral questions raised by the news event.
+12. **Business Impact**: Assessing the news's effect on businesses, industries, and market dynamics.
+13. **Educational Perspective**: Exploring the impact on education systems, policies, and academic research.
+14. **Media Analysis**: Examining how different media outlets are covering the news and the role of media in shaping public perception.
+15. **Human Rights Focus**: Highlighting the human rights issues and implications related to the news.
+16. **Public Opinion**: Analyzing public opinion and sentiment through surveys, social media reactions, and polls.
+17. **Psychological Impact**: Investigating the psychological effects on individuals and communities affected by the news.
+18. **Philosophical Perspective**: Offering philosophical insights and interpretations of the news and its broader significance.
+19. **Future Projections**: Speculating on the future consequences and long-term effects of the news event.
+20. **Comparative Analysis**: Comparing the news with similar events in other countries or regions, highlighting differences and similarities.
+
+Choose the five most relevant types from the provided list.
+
+Generate a detailed article (300 words) and title for each selected type.
+
+Please provide your response strictly in the following JSON format:
+{
+    "category": "xxxxx",
+    "articles":[
+        {"title": "Title of the Article", "content": "Detailed content of the article"},
+        {"title": "Title of the Article", "content": "Detailed content of the article"},
+        {"title": "Title of the Article", "content": "Detailed content of the article"},
+        {"title": "Title of the Article", "content": "Detailed content of the article"},
+        {"title": "Title of the Article", "content": "Detailed content of the article"}
+    ]
+}
+
+Don't display ```json.

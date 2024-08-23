@@ -1,0 +1,25 @@
+Extract only the factual parts from the above target news article and format them as a JSON array `fact list 1`. Facts include names, dates, locations, events, and direct quotes. The facts have to be in the same language as the original article.
+
+Here is an example:
+
+Article: "Yesterday, at around 3 PM, a fire broke out in the downtown area of Springfield. The fire department responded quickly, and the blaze was under control within two hours. According to Fire Chief John Smith, 'The cause of the fire is still under investigation.' There were no reported injuries, but several buildings were damaged. Local business owner, Jane Doe, expressed her concern about the safety of the area."
+
+Facts in JSON Array:
+[
+  "A fire broke out in the downtown area of Springfield.",
+  "The fire started around 3 PM.",
+  "The fire department controlled the blaze within two hours.",
+  "Fire Chief John Smith said, 'The cause of the fire is still under investigation.'",
+  "There were no reported injuries.",
+  "Several buildings were damaged.",
+  "Local business owner, Jane Doe, expressed concern about the safety of the area."
+]
+
+# Step 2
+
+Please perform a search on the internet for news articles related to `article 1`. Ensure that all related news articles are in the same language as `article 1`. Ensure that the news items are from within the last two days. Format the link of these articles as a JSON array `url list 1`. Verify the accuracy of each link to ensure it directs to the correct news article.
+
+# Step 3
+
+1. Extract only the factual parts from the news articles fetched at step 2. The facts have to be in the same language as the original article.
+2. Add the additional factual information extracted from related articles to `fact list 1`.

@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-(qm=91$)s9%ag8#)azcmpaz9f7r_48)r*@$*!vsj*po3ks5ya@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -99,8 +98,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
-
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 DATABASES = {
     'default': {

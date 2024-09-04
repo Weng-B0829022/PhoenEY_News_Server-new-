@@ -120,7 +120,7 @@ def run_newsapi(keyword):
 
     date_7_days_ago = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
     keyword_taiwan_news = news_api.get_keyword_taiwan_news(keyword, date_7_days_ago)
-    with open('keyword_taiwan_news.json', 'w') as file:
+    with open('keyword_taiwan_news.json', 'w', encoding='utf-8') as file:
         json.dump(keyword_taiwan_news, file, ensure_ascii=False, indent=4)
     return keyword_taiwan_news
 

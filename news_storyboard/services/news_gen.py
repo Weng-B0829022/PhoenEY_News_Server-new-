@@ -137,7 +137,7 @@ def extract_keyword_news_fact(articles):
     derivative_articles = access_gpt(gpt_messages)
 
     derivative_articles_path = os.path.join(settings.BASE_DIR, 'news_storyboard', 'services', 'derivative_articles.json')
-    with open(derivative_articles_path, 'w') as file:
+    with open(derivative_articles_path, 'w', encoding='utf-8') as file:
         json.dump(derivative_articles, file, ensure_ascii=False, indent=4)
 
     with open(derivative_articles_path, 'r', encoding='utf-8') as file:
@@ -193,7 +193,7 @@ def run_news_gen():# # Get Taiwan news
     # Get news based on keyword
     keyword_taiwan_news = read_news_json('keyword_taiwan_news.json')
     derivative_articles_and_storyboards = extract_keyword_news_fact(keyword_taiwan_news)
-    with open('derivative_articles_and_storyboards.json', 'w') as file:
+    with open('derivative_articles_and_storyboards.json', 'w', encoding='utf-8') as file:
         json.dump(derivative_articles_and_storyboards, file, ensure_ascii=False, indent=4)
     return derivative_articles_and_storyboards
 

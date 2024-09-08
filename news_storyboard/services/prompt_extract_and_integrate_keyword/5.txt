@@ -8,6 +8,8 @@ The storyboard should include:
 - Description of the image or video to be shown. Varying images and videos as needed, with some segments possibly using the same image or video
 - Voiceover text for each segment
 - The voiceover text language should match the news event language
+- Do not generate irrelevant content in the storyboard
+- The content of storyboard should start directly exectly from "1\n00:00:00,000"
 
 Example storyboard:
 1

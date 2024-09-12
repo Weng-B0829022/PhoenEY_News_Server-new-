@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import MockTokenObtainPairView, MockTokenRefreshView, DataView
 #爬蟲轉新聞稿
-from .views import NewsAPIView, NewsGenView, NewsStatusView
+from .views import NewsAPIView, NewsGenView, NewsStatusView, NewsGenImgView
 
 
 urlpatterns = [
@@ -11,4 +11,4 @@ urlpatterns = [
     path('api/execute-newsapi', NewsAPIView.as_view(), name='execute_newsapi'),
     path('api/execute-status', NewsStatusView.as_view(), name='news_status'),
     path('api/execute-news-gen', NewsGenView.as_view(), name='execute_news_gen'),
-]
+    path('api/execute_news_gen_img', NewsGenImgView.as_view(), name='execute_news_gen_img'),]

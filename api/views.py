@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.views import View
-from news_storyboard.services.news_service import execute_newsapi, execute_news_gen
+from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img
 import logging
 import asyncio
 import threading
@@ -164,3 +164,10 @@ class NewsStatusView(View):
             logger.warning(f"Unexpected state: {current_step}")
             return JsonResponse({'status': 'idle'})
 
+class NewsGenImgView(APIView):
+    def post(self, request):
+        result = execute_news_gen_img()
+        if result['status'] == 'success':
+            return JsonResponse(result, json_dumps_params={'ensure_ascii': False})
+        else:
+            return JsonResponse(result, json_dumps_params={'ensure_ascii': False},  status=500)

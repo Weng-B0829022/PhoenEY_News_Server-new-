@@ -7,9 +7,9 @@ from django.conf import settings
 import os
 import json
 
-load_dotenv(settings.BASE_DIR)
+
 def access_gpt(messages):
-    load_dotenv()
+    load_dotenv(os.path.join(settings.BASE_DIR, '.env'))
     client = OpenAI(
         api_key=os.environ.get('OPENAI_API_KEY'),
     )

@@ -5,11 +5,13 @@ from django.http import JsonResponse
 from django.conf import settings
 from dotenv import load_dotenv
 from openai import OpenAI
-load_dotenv(settings.BASE_DIR)
 
+
+load_dotenv(os.path.join(settings.BASE_DIR, '.env'))
 client = OpenAI(
     api_key=os.environ.get('OPENAI_API_KEY'),
 )
+
 
 # 提取 JSON 檔案
 def extract_image_descriptions_from_storyboard(file_path):
@@ -23,12 +25,14 @@ def extract_image_descriptions_from_storyboard(file_path):
     for article in data['articles']:
         storyboard = article['storyboard']
         lines = storyboard.split('\n')
+
         images = []
 
         for line in lines:
             if line.startswith("Image:"):
                 #  'Image:' 後面的部分
                 image_description = line.split("Image:")[1].strip()
+                print(image_description)
                 images.append(image_description)
 
         # 保存提取到的圖片描述

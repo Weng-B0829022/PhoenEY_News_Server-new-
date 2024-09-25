@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.views import View
-from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img
+from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, execute_news_composite_video
 import logging
 import asyncio
 import threading
@@ -166,8 +166,48 @@ class NewsStatusView(View):
 
 class NewsGenImgView(APIView):
     def post(self, request):
-        result = execute_news_gen_img()
+        # 從請求中獲取 index 參數，如果沒有提供則默認為 0
+        index = request.query_params.get('index', 0)
+        try:
+            # 將 index 轉換為整數
+            index = int(index)
+        except ValueError:
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Invalid index. Must be an integer.'
+            }, status=400)
+    
+        # 調用執行函數，傳入 index 參數
+        result = execute_news_gen_img(index)
+        
         if result['status'] == 'success':
             return JsonResponse(result, json_dumps_params={'ensure_ascii': False})
         else:
-            return JsonResponse(result, json_dumps_params={'ensure_ascii': False},  status=500)
+            return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, status=500)
+
+class NewsCompositeVideoView(APIView):
+    def get(self, request):
+        try:
+            # 從查詢參數中獲取 index
+            index = request.query_params.get('index')
+            
+            if index is None:
+                return Response({"error": "Index parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
+            
+            # 確保 index 是一個整數
+            index = int(index)
+            
+            # 這裡添加處理邏輯，例如根據索引生成或獲取新聞合成視頻
+            # 這只是一個示例，實際邏輯需要根據您的需求來實現
+            video_info = {
+                "id": index,
+                "title": f"News Composite Video {index}",
+                "status": "processing",  # 或 "completed", "failed" 等
+                "video_url": f"https://example.com/news_videos/{index}.mp4"
+            }
+            result = execute_news_composite_video(int(index))
+            return Response(video_info)
+        except ValueError:
+            return Response({"error": "Invalid index. Must be an integer."}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

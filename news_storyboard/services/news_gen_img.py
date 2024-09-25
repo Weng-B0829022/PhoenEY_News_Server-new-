@@ -35,30 +35,32 @@ def translate_to_english(text):
         return text  # 如果翻譯失敗，返回原始文本
 
 # 提取 JSON 檔案並翻譯圖片描述
-def extract_image_descriptions_from_storyboard(file_path):
+def extract_image_descriptions_from_storyboard(file_path, article_index):
     # 開啟並讀取 JSON 檔案
     with open(file_path, 'r', encoding='utf-8') as file:
         data = json.load(file)
 
-    # 提取每篇文章的內容
-    image_descriptions = {}
-    for article in data['articles']:
-        storyboard = article['storyboard']
-        lines = storyboard.split('\n')
-        images = []
+    # 檢查 article_index 是否有效
+    if article_index < 0 or article_index >= len(data['articles']):
+        logger.error(f"無效的文章索引: {article_index}")
+        return None
 
-        for line in lines:
-            if line.startswith("Image:"):
-                # 'Image:' 後面的部分
-                image_description = line.split("Image:")[1].strip()
-                # 翻譯為英文
-                translated_description = translate_to_english(image_description)
-                images.append(translated_description)
+    # 提取指定索引的文章內容
+    article = data['articles'][article_index]
+    storyboard = article['storyboard']
+    lines = storyboard.split('\n')
+    images = []
 
-        # 保存提取到的圖片描述
-        image_descriptions[article['title']] = images
-    
-    return image_descriptions
+    for line in lines:
+        if line.startswith("Image:"):
+            # 'Image:' 後面的部分
+            image_description = line.split("Image:")[1].strip()
+            # 翻譯為英文
+            translated_description = translate_to_english(image_description)
+            images.append(translated_description)
+
+    # 返回提取到的圖片描述
+    return {article['title']: images}
 
 # 從 Leonardo API 生成圖片
 def generate_images_from_descriptions(image_descriptions, save_directory=os.path.join(settings.MEDIA_ROOT, 'generated_images/')):
@@ -179,9 +181,9 @@ def generate_news():
         return JsonResponse({'error': 'Invalid request method'}, status=405)
 
 # 測試新聞生成邏輯
-def run_news_gen_img():
+def run_news_gen_img(index):
     file_path = 'derivative_articles_and_storyboards.json'
-    image_descriptions = extract_image_descriptions_from_storyboard(file_path)
+    image_descriptions = extract_image_descriptions_from_storyboard(file_path, index)
     image_urls = generate_images_from_descriptions(image_descriptions)
     return image_urls
 

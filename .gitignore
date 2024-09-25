@@ -4,3 +4,6 @@ db.sqlite3
 .env
 venv/
 generated_images
+ffmpeg.exe
+ffplay.exe
+ffprobe.exe

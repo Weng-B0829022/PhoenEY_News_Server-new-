@@ -58,3 +58,19 @@ tzdata==2024.1
 urllib3==2.2.2
 vine==5.1.0
 wcwidth==0.2.13
+charset-normalizer==3.3.2
+click==8.1.7
+colorama==0.4.6
+decorator==4.4.2
+gTTS==2.5.3
+imageio==2.35.1
+imageio-ffmpeg==0.5.1
+moviepy==1.0.3
+numpy==2.1.1
+opencv-python==4.10.0.84
+pillow==10.4.0
+proglog==0.1.10
+pydub==0.25.1
+requests==2.32.3
+tqdm==4.66.5
+voice_api @ file:///C:/Users/%E7%BF%81/Desktop/voice%20api/voice_api-1.1.0-py3-none-any.whl#sha256=845b5e3103f7a512086667d3955dec051bdf57f90d5a48d980cacb83d7b5d284

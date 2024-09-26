@@ -14,7 +14,7 @@ import threading
 import traceback
 
 logger = logging.getLogger(__name__)
-
+logger.debug("This is a debug message")
 # 模擬的用戶憑證
 MOCK_USERNAME = 'testuser'
 MOCK_PASSWORD = 'testpassword'
@@ -68,7 +68,6 @@ class DataView(APIView):
         logger.info(f"Data access attempt by user: {request.user}")
         return Response({"message": "This is protected data", "user": str(request.user)})
         
-
 global_state = {
     'current_step': 'idle',
     'news_result': None,
@@ -186,28 +185,66 @@ class NewsGenImgView(APIView):
             return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, status=500)
 
 class NewsCompositeVideoView(APIView):
-    def get(self, request):
+    def post(self, request):
+        
+        logger.info("Received request for video generation")
         try:
-            # 從查詢參數中獲取 index
+            # 从查询参数中获取 index
             index = request.query_params.get('index')
+            logger.info(f"Received index parameter: {index}")
             
             if index is None:
+                logger.warning("Index parameter is missing")
                 return Response({"error": "Index parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
             
-            # 確保 index 是一個整數
+            # 将 index 转换为整数
             index = int(index)
+            logger.info(f"Converted index to integer: {index}")
             
-            # 這裡添加處理邏輯，例如根據索引生成或獲取新聞合成視頻
-            # 這只是一個示例，實際邏輯需要根據您的需求來實現
-            video_info = {
+            # 更新全局状态
+            global_state['current_step'] = 'news_composite_video'
+            global_state['status'] = 'generating'
+            global_state['error_message'] = None
+            logger.info(f"Updated global state: step={global_state['current_step']}, status={global_state['status']}")
+            
+            # 立即返回成功响应
+            response_data = {
+                "message": "Video generation started",
                 "id": index,
-                "title": f"News Composite Video {index}",
-                "status": "processing",  # 或 "completed", "failed" 等
-                "video_url": f"https://example.com/news_videos/{index}.mp4"
+                "status": "processing"
             }
-            result = execute_news_composite_video(int(index))
-            return Response(video_info)
+            logger.info(f"Preparing response: {response_data}")
+            
+            # 在后台启动视频生成过程
+            logger.info(f"Starting background video generation task for index {index}")
+            threading.Thread(target=self.generate_video, args=(index,)).start()
+            
+            logger.info("Returning successful response")
+            return Response(response_data, status=status.HTTP_202_ACCEPTED)
+        
         except ValueError:
+            logger.error(f"Invalid index value: {index}")
             return Response({"error": "Invalid index. Must be an integer."}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
+            logger.error(f"Unexpected error in NewsCompositeVideoView: {str(e)}", exc_info=True)
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def generate_video(self, index):
+        logger.info(f"Starting video generation process for index {index}")
+
+        try:
+            # 执行视频生成逻辑
+            logger.info(f"Executing news_composite_video for index {index}")
+            result = execute_news_composite_video(index)
+            logger.info(f"Video generation completed for index {index}. Result: {result}")
+            
+            # 更新全局状态
+            global_state['current_step'] = 'completed'
+            global_state['news_result'] = result
+            global_state['status'] = 'completed'
+            logger.info(f"Updated global state after video generation: {global_state}")
+        except Exception as e:
+            logger.error(f"Error during video generation for index {index}: {str(e)}", exc_info=True)
+            global_state['status'] = 'error'
+            global_state['error_message'] = str(e)
+            logger.info(f"Updated global state after error: {global_state}")

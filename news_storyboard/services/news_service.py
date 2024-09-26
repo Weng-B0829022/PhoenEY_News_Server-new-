@@ -28,8 +28,10 @@ def execute_news_gen_img(index):
         return {"status": "error", "message": str(e)}
     
 def execute_news_composite_video(index):
+    
     try:
         result = run_news_composite_video(index)
+        
         return {"status": "success", "message": f"News video generation completed for index: {index}", "data": result}
     except Exception as e:
         return {"status": "error", "message": str(e)}

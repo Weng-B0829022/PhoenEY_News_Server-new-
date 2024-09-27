@@ -7,7 +7,8 @@ from .views import (
     NewsGenView,
     NewsStatusView,
     NewsGenImgView,
-    NewsCompositeVideoView
+    NewsCompositeVideoView,
+    TestVideoView
 )
 
 urlpatterns = [
@@ -19,4 +20,5 @@ urlpatterns = [
     path('api/execute-news-gen', NewsGenView.as_view(), name='execute_news_gen'),
     path('api/execute-news-gen-img', NewsGenImgView.as_view(), name='execute_news_gen_img'),
     path('api/execute-news-composite-video', NewsCompositeVideoView.as_view(), name='execute_news_composite_video'),
+    path('api/test-video', TestVideoView.as_view(), name='test-video'),
 ]

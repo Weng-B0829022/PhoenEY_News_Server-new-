@@ -12,6 +12,7 @@ import shutil
 from datetime import datetime
 import os
 from django.conf import settings
+import traceback
 
 def overlay_video_on_image(background_path, video_path, output_path):
     # 讀取背景圖像
@@ -79,97 +80,114 @@ def create_title_clip(title, video_size, duration, font='Arial', fontsize=30, co
     
     # 設置持續時間
     return txt_clip.set_duration(duration)
-
 def create_video_from_storyboard(story_data, fps=24, total_duration=120, video_size=(1920, 1080)):
-    # 創建一個新的資料夾來存儲所有素材
+    print("开始创建视频从故事板")
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     materials_folder = f"video_materials_{timestamp}"
     os.makedirs(materials_folder, exist_ok=True)
+    print(f"创建材料文件夹: {materials_folder}")
 
     clips = []
     audio_clips = []
     temp_audio_files = []
     current_time = 0
     
-    api = VoiceAPI(api_base_ip="216.234.102.170", api_port="10620")
-    api.set_model("woman1")
-    
-    for article in story_data:
-        title = article['title']
-        for item in article['storyboard']:
-            sequence = item['sequence']
-            start_time = item['time']['start']
-            end_time = item['time']['end']
-            voiceover_text = item['Voiceover Text']
-            
-            original_duration = calculate_duration(start_time, end_time)
-            
-            if current_time < time_to_seconds(start_time):
-                black_duration = time_to_seconds(start_time) - current_time
-                black_clip = ColorClip(size=video_size, color=(0,0,0)).set_duration(black_duration)
-                clips.append(black_clip)
-                current_time += black_duration
-            # 獲取當前文件的路徑
-            current_path = os.path.dirname(os.path.abspath(__file__))
-            # 獲取上兩層目錄的路徑
-            parent_path = os.path.dirname(os.path.dirname(current_path))
-            # 構建 generated_images 目錄的路徑
-            generated_images_path = os.path.join(parent_path, 'generated_images')
-            image_path = os.path.join(generated_images_path, f"{title}_image_{sequence}.png")
+    try:
+        api = VoiceAPI(api_base_ip="216.234.102.170", api_port="10620")
+        api.set_model("woman1")
+        print("语音 API 初始化完成")
+    except Exception as e:
+        print(f"初始化语音 API 时发生错误: {str(e)}")
+        return None
 
-            if os.path.exists(image_path):
+    for article in story_data:
+        try:
+            title = article['title']
+            print(f"处理文章: {title}")
+            for item in article['storyboard']:
                 try:
-                    # 複製圖片到新資料夾
-                    new_image_path = os.path.join(materials_folder, f"{title}_image_{sequence}.png")
-                    shutil.copy2(image_path, new_image_path)
+                    sequence = item['sequence']
+                    start_time = item['time']['start']
+                    end_time = item['time']['end']
+                    voiceover_text = item['Voiceover Text']
                     
-                    # 生成音頻
-                    audio = api.tts_generate(voiceover_text)
-                    audio_path = os.path.join(materials_folder, f"{title}_audio_{sequence}.mp3")
-                    audio.export(audio_path, format="mp3")
-                    temp_audio_files.append(audio_path)
+                    print(f"处理序列 {sequence}: 从 {start_time} 到 {end_time}")
                     
-                    # 讀取音頻
-                    audio_clip = AudioFileClip(audio_path)
+                    original_duration = calculate_duration(start_time, end_time)
                     
-                    # 決定最終持續時間
-                    final_duration = max(original_duration, audio_clip.duration)
-                    
-                    # 創建圖片片段
-                    img = ImageClip(new_image_path)
-                    img_resized = img.resize(height=video_size[1])
-                    if img_resized.w > video_size[0]:
-                        img_resized = img.resize(width=video_size[0])
-                    clip = img_resized.set_position(('center', 'center')).set_duration(final_duration)
-                    
-                    clips.append(clip)
-                    audio_clips.append(audio_clip)
-                    
-                    current_time += final_duration
-                    
+                    if current_time < time_to_seconds(start_time):
+                        black_duration = time_to_seconds(start_time) - current_time
+                        black_clip = ColorClip(size=video_size, color=(0,0,0)).set_duration(black_duration)
+                        clips.append(black_clip)
+                        current_time += black_duration
+                        print(f"添加黑色片段，持续时间: {black_duration}")
+
+                    current_path = os.path.dirname(os.path.abspath(__file__))
+                    parent_path = os.path.dirname(os.path.dirname(current_path))
+                    generated_images_path = os.path.join(parent_path, 'generated_images')
+                    image_path = os.path.join(generated_images_path, f"{title}_image_{sequence}.png")
+
+                    if os.path.exists(image_path):
+                        try:
+                            new_image_path = os.path.join(materials_folder, f"{title}_image_{sequence}.png")
+                            shutil.copy2(image_path, new_image_path)
+                            print(f"复制图片到: {new_image_path}")
+                            
+                            audio = api.tts_generate(voiceover_text)
+                            audio_path = os.path.join(materials_folder, f"{title}_audio_{sequence}.mp3")
+                            audio.export(audio_path, format="mp3")
+                            temp_audio_files.append(audio_path)
+                            print(f"生成音频: {audio_path}")
+                            
+                            audio_clip = AudioFileClip(audio_path)
+                            
+                            final_duration = max(original_duration, audio_clip.duration)
+                            
+                            img = ImageClip(new_image_path)
+                            img_resized = img.resize(height=video_size[1])
+                            if img_resized.w > video_size[0]:
+                                img_resized = img.resize(width=video_size[0])
+                            clip = img_resized.set_position(('center', 'center')).set_duration(final_duration)
+                            
+                            clips.append(clip)
+                            audio_clips.append(audio_clip)
+                            
+                            current_time += final_duration
+                            print(f"添加图片和音频片段，持续时间: {final_duration}")
+                            
+                        except Exception as e:
+                            print(f"处理图片或音频时发生错误 {image_path}: {str(e)}")
+                            print(traceback.format_exc())
+                            clip = ColorClip(size=video_size, color=(0,0,0)).set_duration(original_duration)
+                            clips.append(clip)
+                            current_time += original_duration
+                    else:
+                        print(f"图片文件不存在: {image_path}")
+                        clip = ColorClip(size=video_size, color=(0,0,0)).set_duration(original_duration)
+                        clips.append(clip)
+                        current_time += original_duration
                 except Exception as e:
-                    print(f"無法處理圖片或音頻 {image_path}: {str(e)}")
-                    clip = ColorClip(size=video_size, color=(0,0,0)).set_duration(original_duration)
-                    clips.append(clip)
-                    current_time += original_duration
-            else:
-                print(f"圖片文件不存在: {image_path}")
-                clip = ColorClip(size=video_size, color=(0,0,0)).set_duration(original_duration)
-                clips.append(clip)
-                current_time += original_duration
-    
+                    print(f"处理故事板项目时发生错误: {str(e)}")
+                    print(traceback.format_exc())
+        except Exception as e:
+            print(f"处理文章时发生错误: {str(e)}")
+            print(traceback.format_exc())
+
     if current_time < total_duration:
         remaining_duration = total_duration - current_time
         final_black_clip = ColorClip(size=video_size, color=(0,0,0)).set_duration(remaining_duration)
         clips.append(final_black_clip)
-    
+        print(f"添加最终黑色片段，持续时间: {remaining_duration}")
+
     if not clips:
-        print("沒有可用的片段來創建視頻")
+        print("没有可用的片段来创建视频")
         return None
 
     try:
+        print("开始连接视频片段")
         final_clip = concatenate_videoclips(clips)
         if audio_clips:
+            print("开始连接音频片段")
             final_audio = concatenate_audioclips(audio_clips)
             if final_audio.duration > final_clip.duration:
                 final_audio = final_audio.subclip(0, final_clip.duration)
@@ -177,12 +195,15 @@ def create_video_from_storyboard(story_data, fps=24, total_duration=120, video_s
         
         final_clip = final_clip.set_fps(fps)
         output_path = os.path.join(materials_folder, f"{title}_final_video.mp4")
+        print(f"开始写入最终视频: {output_path}")
         final_clip.write_videofile(output_path, codec="libx264", audio_codec="aac", bitrate="8000k")
+        print("视频写入完成")
     except Exception as e:
-        print(f"生成視頻時發生錯誤: {str(e)}")
+        print(f"生成最终视频时发生错误: {str(e)}")
+        print(traceback.format_exc())
         return None
     finally:
-        # 清理資源
+        print("清理资源")
         for clip in clips:
             clip.close()
         for audio_clip in audio_clips:
@@ -190,7 +211,7 @@ def create_video_from_storyboard(story_data, fps=24, total_duration=120, video_s
         if 'final_clip' in locals():
             final_clip.close()
     
-    print(f"所有素材和最終視頻已保存在資料夾: {materials_folder}")
+    print(f"所有素材和最终视频已保存在文件夹: {materials_folder}")
     return output_path
 
 
@@ -288,30 +309,55 @@ def extract_image_descriptions_from_storyboard(file_path, index):
     print(f"----> Processed article: {article_data}")
     
     return [article_data] 
-
 def run_news_composite_video(index):
-    file_path = os.path.join(settings.BASE_DIR, 'derivative_articles_and_storyboards.json')
-    print(file_path)
-    story_data = extract_image_descriptions_from_storyboard(file_path, index)
-    initial_video = create_video_from_storyboard(story_data)
-    
-    if initial_video:
-        print(f"初始視頻保存在：{initial_video}")
+    try:
+        file_path = os.path.join(settings.BASE_DIR, 'derivative_articles_and_storyboards.json')
+        print(f"使用文件路径: {file_path}")
         
-        # 新增的視頻疊加步驟
-        background_image = os.path.join(os.path.dirname(os.path.abspath(__file__)), "background2.webp")
-        output_video = 'final_output_video.mp4'
+        story_data = extract_image_descriptions_from_storyboard(file_path, index)
+        if not story_data:
+            print("无法从故事板提取数据")
+            return {"status": "error", "message": "无法从故事板提取数据", "video_path": None}
+
+        initial_video = create_video_from_storyboard(story_data)
         
-        try:
-            overlay_video_on_image(background_image, initial_video, output_video)
-            print(f"最終視頻（包含背景疊加和音頻）保存在：{output_video}")
-            return output_video
-        except Exception as e:
-            print(f"視頻疊加過程中發生錯誤：{str(e)}")
-            return initial_video
-    else:
-        print("無法生成初始視頻")
-        return None
+        if initial_video:
+            print(f"初始视频保存在：{initial_video}")
+            
+            background_image = os.path.join(os.path.dirname(os.path.abspath(__file__)), "background2.webp")
+            output_video = 'final_output_video.mp4'
+            
+            try:
+                overlay_video_on_image(background_image, initial_video, output_video)
+                print(f"最终视频（包含背景叠加和音频）保存在：{output_video}")
+                
+                if os.path.exists(output_video):
+                    return {
+                        "status": "success",
+                        "message": "视频生成成功",
+                        "video_path": output_video
+                    }
+                else:
+                    return {
+                        "status": "error",
+                        "message": "最终视频文件未找到",
+                        "video_path": initial_video
+                    }
+            except Exception as e:
+                print(f"视频叠加过程中发生错误：{str(e)}")
+                traceback.print_exc()
+                return {
+                    "status": "error",
+                    "message": f"视频叠加过程中发生错误: {str(e)}",
+                    "video_path": initial_video
+                }
+        else:
+            print("无法生成初始视频")
+            return {"status": "error", "message": "无法生成初始视频", "video_path": None}
+    except Exception as e:
+        print(f"视频生成过程中发生未预期的错误：{str(e)}")
+        traceback.print_exc()
+        return {"status": "error", "message": f"发生未预期的错误: {str(e)}", "video_path": None}
 
 if __name__ == '__main__':
     run_news_composite_video()

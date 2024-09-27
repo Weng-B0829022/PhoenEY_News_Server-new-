@@ -66,3 +66,300 @@ C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_stor
 Watching for file changes with StatReloader
 C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_composite_video.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.2654836177825928 seconds.
+Prefix dict has been built succesfully.
+Method Not Allowed: /api/execute-news-gen-img
+Not Found: /favicon.ico
+Bad Request: /api/execute-news-composite-video
+Bad Request: /api/execute-news-composite-video
+Bad Request: /api/execute-news-composite-video
+Bad Request: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Bad Request: /api/execute-news-composite-video
+Method Not Allowed: /api/execute-news-composite-video
+Bad Request: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unexpected error in NewsCompositeVideoView: Unsupported media type "multipart/form-data; boundary=X-INSOMNIA-BOUNDARY" in request.
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 193, in post
+    index = request.data.get('index', 0)
+            ^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 355, in _parse
+    raise exceptions.UnsupportedMediaType(media_type)
+rest_framework.exceptions.UnsupportedMediaType: Unsupported media type "multipart/form-data; boundary=X-INSOMNIA-BOUNDARY" in request.
+Internal Server Error: /api/execute-news-composite-video
+Unexpected error in NewsCompositeVideoView: Unsupported media type "application/x-www-form-urlencoded" in request.
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 193, in post
+    index = request.data.get('index', 0)
+            ^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 355, in _parse
+    raise exceptions.UnsupportedMediaType(media_type)
+rest_framework.exceptions.UnsupportedMediaType: Unsupported media type "application/x-www-form-urlencoded" in request.
+Internal Server Error: /api/execute-news-composite-video
+Unexpected error in NewsCompositeVideoView: Unsupported media type "multipart/form-data; boundary=X-INSOMNIA-BOUNDARY" in request.
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 193, in post
+    index = request.data.get('index', 0)
+            ^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 355, in _parse
+    raise exceptions.UnsupportedMediaType(media_type)
+rest_framework.exceptions.UnsupportedMediaType: Unsupported media type "multipart/form-data; boundary=X-INSOMNIA-BOUNDARY" in request.
+Internal Server Error: /api/execute-news-composite-video
+Unexpected error in NewsCompositeVideoView: Unsupported media type "multipart/form-data; boundary=X-INSOMNIA-BOUNDARY" in request.
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 193, in post
+    index = request.data.get('index', 0)
+            ^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 355, in _parse
+    raise exceptions.UnsupportedMediaType(media_type)
+rest_framework.exceptions.UnsupportedMediaType: Unsupported media type "multipart/form-data; boundary=X-INSOMNIA-BOUNDARY" in request.
+Internal Server Error: /api/execute-news-composite-video
+Unexpected error in NewsCompositeVideoView: Unsupported media type "multipart/form-data; boundary=X-INSOMNIA-BOUNDARY" in request.
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 193, in post
+    index = request.data.get('index', 0)
+            ^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 355, in _parse
+    raise exceptions.UnsupportedMediaType(media_type)
+rest_framework.exceptions.UnsupportedMediaType: Unsupported media type "multipart/form-data; boundary=X-INSOMNIA-BOUNDARY" in request.
+Internal Server Error: /api/execute-news-composite-video
+Method Not Allowed: /api/execute-news-composite-video
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_composite_video.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_composite_video.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_composite_video.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unexpected error in NewsCompositeVideoView: 'video_path'
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 209, in post
+    video_path = result['video_path']
+                 ~~~~~~^^^^^^^^^^^^^^
+KeyError: 'video_path'
+Internal Server Error: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_composite_video.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unexpected error in NewsCompositeVideoView: name 'run_news_composite_video' is not defined
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 205, in post
+    result = run_news_composite_video(index)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'run_news_composite_video' is not defined
+Internal Server Error: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-img
+Unexpected error in NewsCompositeVideoView: name 'execute_news_composite_video_news_composite_video' is not defined
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 205, in post
+    result = execute_news_composite_video(index)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'execute_news_composite_video_news_composite_video' is not defined
+Internal Server Error: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Video generation failed: News video generation completed for index: 0
+Internal Server Error: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Video generation failed: News video generation completed for index: 0
+Internal Server Error: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Video generation failed: News video generation completed for index: 0
+Internal Server Error: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unexpected error in NewsCompositeVideoView: 'dict' object has no attribute 'video_path'
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 209, in post
+    video_path = result.video_path
+                 ^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'video_path'
+Internal Server Error: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unexpected error in NewsCompositeVideoView: 'dict' object has no attribute 'data'
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 209, in post
+    video_path = result.data.video_path
+                 ^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'data'
+Internal Server Error: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-composite-video
+Unexpected error in NewsCompositeVideoView: name 'result' is not defined
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 207, in post
+    logger.info(f"Video generation completed for index {index}. Result: {result}")
+                                                                         ^^^^^^
+NameError: name 'result' is not defined
+Internal Server Error: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unexpected error in NewsCompositeVideoView: Unsupported media type "text/plain;charset=UTF-8" in request.
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 194, in post
+    index = request.data.get('index')
+            ^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 355, in _parse
+    raise exceptions.UnsupportedMediaType(media_type)
+rest_framework.exceptions.UnsupportedMediaType: Unsupported media type "text/plain;charset=UTF-8" in request.
+Internal Server Error: /api/execute-news-composite-video
+Unexpected error in NewsCompositeVideoView: Unsupported media type "text/plain;charset=UTF-8" in request.
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 194, in post
+    index = request.data.get('index')
+            ^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 355, in _parse
+    raise exceptions.UnsupportedMediaType(media_type)
+rest_framework.exceptions.UnsupportedMediaType: Unsupported media type "text/plain;charset=UTF-8" in request.
+Internal Server Error: /api/execute-news-composite-video
+Unexpected error in NewsCompositeVideoView: Unsupported media type "text/plain;charset=UTF-8" in request.
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 194, in post
+    index = request.data.get('index')
+            ^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 355, in _parse
+    raise exceptions.UnsupportedMediaType(media_type)
+rest_framework.exceptions.UnsupportedMediaType: Unsupported media type "text/plain;charset=UTF-8" in request.
+Internal Server Error: /api/execute-news-composite-video
+Watching for file changes with StatReloader
+Unexpected error in NewsCompositeVideoView: Unsupported media type "text/plain;charset=UTF-8" in request.
+Traceback (most recent call last):
+  File "C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py", line 194, in post
+    index = request.data.get('index')
+            ^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 220, in data
+    self._load_data_and_files()
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 283, in _load_data_and_files
+    self._data, self._files = self._parse()
+                              ^^^^^^^^^^^^^
+  File "C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\request.py", line 355, in _parse
+    raise exceptions.UnsupportedMediaType(media_type)
+rest_framework.exceptions.UnsupportedMediaType: Unsupported media type "text/plain;charset=UTF-8" in request.
+Internal Server Error: /api/execute-news-composite-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_composite_video.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_composite_video.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-img
+Watching for file changes with StatReloader

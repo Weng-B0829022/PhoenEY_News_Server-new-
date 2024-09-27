@@ -12,6 +12,9 @@ import logging
 import asyncio
 import threading
 import traceback
+from django.http import FileResponse
+import os 
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 logger.debug("This is a debug message")
@@ -166,7 +169,7 @@ class NewsStatusView(View):
 class NewsGenImgView(APIView):
     def post(self, request):
         # 從請求中獲取 index 參數，如果沒有提供則默認為 0
-        index = request.query_params.get('index', 0)
+        index = request.data.get('index', 0)
         try:
             # 將 index 轉換為整數
             index = int(index)
@@ -186,65 +189,58 @@ class NewsGenImgView(APIView):
 
 class NewsCompositeVideoView(APIView):
     def post(self, request):
-        
         logger.info("Received request for video generation")
         try:
-            # 从查询参数中获取 index
-            index = request.query_params.get('index')
+            index = request.data.get('index')
             logger.info(f"Received index parameter: {index}")
             
             if index is None:
                 logger.warning("Index parameter is missing")
                 return Response({"error": "Index parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
             
-            # 将 index 转换为整数
             index = int(index)
             logger.info(f"Converted index to integer: {index}")
             
-            # 更新全局状态
-            global_state['current_step'] = 'news_composite_video'
-            global_state['status'] = 'generating'
-            global_state['error_message'] = None
-            logger.info(f"Updated global state: step={global_state['current_step']}, status={global_state['status']}")
+            # 执行视频生成逻辑
+            logger.info(f"Executing news_composite_video for index {index}")
             
-            # 立即返回成功响应
-            response_data = {
-                "message": "Video generation started",
-                "id": index,
-                "status": "processing"
-            }
-            logger.info(f"Preparing response: {response_data}")
+            result = execute_news_composite_video(index)
+
+            video_path = os.path.join(settings.BASE_DIR, 'final_output_video.mp4')
+            if os.path.exists(video_path):
+                video_file = open(video_path, 'rb')
+                response = FileResponse(video_file, content_type='video/mp4')
+                response['Content-Disposition'] = 'attachment; filename="test_video.mp4"'
+                logger.info(f"Returning test MP4 file: {video_path}")
+                return response
+            else:
+                logger.error(f"Test video file not found: {video_path}")
+                return Response({"error": "Test video file not found"}, status=status.HTTP_404_NOT_FOUND)
             
-            # 在后台启动视频生成过程
-            logger.info(f"Starting background video generation task for index {index}")
-            threading.Thread(target=self.generate_video, args=(index,)).start()
-            
-            logger.info("Returning successful response")
-            return Response(response_data, status=status.HTTP_202_ACCEPTED)
-        
         except ValueError:
             logger.error(f"Invalid index value: {index}")
             return Response({"error": "Invalid index. Must be an integer."}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             logger.error(f"Unexpected error in NewsCompositeVideoView: {str(e)}", exc_info=True)
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    def generate_video(self, index):
-        logger.info(f"Starting video generation process for index {index}")
-
+class TestVideoView(APIView):
+    def get(self, request):
+        logger.info("Received request for test video")
         try:
-            # 执行视频生成逻辑
-            logger.info(f"Executing news_composite_video for index {index}")
-            result = execute_news_composite_video(index)
-            logger.info(f"Video generation completed for index {index}. Result: {result}")
-            
-            # 更新全局状态
-            global_state['current_step'] = 'completed'
-            global_state['news_result'] = result
-            global_state['status'] = 'completed'
-            logger.info(f"Updated global state after video generation: {global_state}")
+            # 构建固定的视频文件路径
+            video_path = os.path.join(settings.BASE_DIR, 'final_output_video.mp4')
+            logger.info(f"Constructed test video path: {video_path}")
+
+            if os.path.exists(video_path):
+                video_file = open(video_path, 'rb')
+                response = FileResponse(video_file, content_type='video/mp4')
+                response['Content-Disposition'] = 'attachment; filename="test_video.mp4"'
+                logger.info(f"Returning test MP4 file: {video_path}")
+                return response
+            else:
+                logger.error(f"Test video file not found: {video_path}")
+                return Response({"error": "Test video file not found"}, status=status.HTTP_404_NOT_FOUND)
+
         except Exception as e:
-            logger.error(f"Error during video generation for index {index}: {str(e)}", exc_info=True)
-            global_state['status'] = 'error'
-            global_state['error_message'] = str(e)
-            logger.info(f"Updated global state after error: {global_state}")
+            logger.error(f"Unexpected error in TestVideoView: {str(e)}", exc_info=True)
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

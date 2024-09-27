@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 import time
 import logging
 from openai import OpenAI
+import threading
+import queue
 
 load_dotenv(os.path.join(settings.BASE_DIR, '.env'))
 # 設定 logger
@@ -16,6 +18,35 @@ logger = logging.getLogger(__name__)
 client = OpenAI(
         api_key=os.environ.get('OPENAI_API_KEY'),
     )
+def fetch_generation_images(generation_id):
+    url = f"https://cloud.leonardo.ai/api/rest/v1/generations/{generation_id}"
+    headers = {
+        'accept': 'application/json',
+        'authorization': f'Bearer {os.environ.get("LEONARDO_API_KEY")}',
+    }
+
+    for attempt in range(10):
+        try:
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
+            api_response = response.json()
+
+            generated_images = api_response.get("generations_by_pk", {}).get("generated_images", [])
+            image_urls = [img.get("url") for img in generated_images if img.get("url")]
+
+            if image_urls:
+                return image_urls[0]  # 返回第一個圖片 URL
+            else:
+                print(f"等待生成圖片... 嘗試 {attempt + 1}/10")
+                time.sleep(5)  # 沒有圖片則延遲後重試
+
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Attempt {attempt + 1}: API request failed: {e}")
+            continue
+
+    logger.error("無法獲取生成的圖片")
+    return None
+
 # 翻譯描述為英文的函數
 def translate_to_english(text):
     try:
@@ -62,7 +93,7 @@ def extract_image_descriptions_from_storyboard(file_path, article_index):
     # 返回提取到的圖片描述
     return {article['title']: images}
 
-# 從 Leonardo API 生成圖片
+# 獲取生成圖片的 URL
 def generate_images_from_descriptions(image_descriptions, save_directory=os.path.join(settings.MEDIA_ROOT, 'generated_images/')):
     if not os.path.exists(save_directory):
         os.makedirs(save_directory)
@@ -73,91 +104,77 @@ def generate_images_from_descriptions(image_descriptions, save_directory=os.path
     leonardo_url = "https://cloud.leonardo.ai/api/rest/v1/generations"
     headers = {
         'accept': 'application/json',
-        'authorization': f'Bearer {os.environ.get("LEONARDO_API_KEY")}',  # 替換成你的 API Key
+        'authorization': f'Bearer {os.environ.get("LEONARDO_API_KEY")}',
         'content-type': 'application/json'
     }
 
-    for article_title, descriptions in image_descriptions.items():
-        for idx, description in enumerate(descriptions):
-            try:
-                # 使用 Leonardo API 生成圖片
-                payload = {
-                    "prompt": description,
-                    "alchemy": True,
-                    "height": 768,
-                    "modelId": "aa77f04e-3eec-4034-9c07-d0f619684628",
-                    "num_images": 1,
-                    "presetStyle": "NONE",
-                    "width": 1024,
-                    "photoReal": True,
-                    "expandedDomain": True,
-                    "photoRealVersion": "v2",
-                    "public": False,
-                    "guidance_scale": 7,
-                    "num_inference_steps": 30,
-                    "contrastRatio": 0.8,
-                    "highResolution": True,
-                    "negative_prompt": "low resolution, bad quality, unrealistic"
-                }
-                response = requests.post(leonardo_url, headers=headers, json=payload)
-                response.raise_for_status()
-                api_response = response.json()
+    # 添加進度追踪
+    total_images = sum(len(descriptions) for descriptions in image_descriptions.values())
+    progress_counter = 0
+    progress_lock = threading.Lock()
 
-                generation_id = api_response.get("sdGenerationJob", {}).get("generationId")
-                if generation_id:
-                    # 根據 generation_id 獲取圖片 URL
-                    image_url = fetch_generation_images(generation_id)
-                    
-                    if image_url:
-                        # 下載並保存圖片
-                        image_response = requests.get(image_url)
-                        if image_response.status_code == 200:
-                            image_path = os.path.join(save_directory, f'{article_title}_image_{idx+1}.png')
-                            with open(image_path, 'wb') as f:
-                                f.write(image_response.content)
-                            image_urls.append(image_url)
-                        else:
-                            logger.error(f"圖片下載失敗: {description}")
-                    else:
-                        logger.error(f"生成圖片失敗: {description}")
-                else:
-                    logger.error(f"Leonardo API 沒有返回 generation_id")
-            except Exception as e:
-                logger.error(f"生成圖片失敗: {str(e)}")
-    
-    return image_urls
-
-# 獲取生成圖片的 URL
-def fetch_generation_images(generation_id):
-    url = f"https://cloud.leonardo.ai/api/rest/v1/generations/{generation_id}"
-    headers = {
-        'accept': 'application/json',
-        'authorization': f'Bearer {os.environ.get("LEONARDO_API_KEY")}',  # 替換成你的 API Key
-    }
-
-    # 嘗試多次請求 Leonardo API 以檢索生成結果
-    for attempt in range(10):
+    def generate_image(article_title, description, idx):
+        nonlocal progress_counter
         try:
-            response = requests.get(url, headers=headers)
+            # 使用 Leonardo API 生成圖片
+            payload = {
+                "prompt": description,
+                "alchemy": True,
+                "height": 768,
+                "modelId": "aa77f04e-3eec-4034-9c07-d0f619684628",
+                "num_images": 1,
+                "presetStyle": "NONE",
+                "width": 1024,
+                "photoReal": True,
+                "expandedDomain": True,
+                "photoRealVersion": "v2",
+                "public": False,
+                "guidance_scale": 7,
+                "num_inference_steps": 30,
+                "contrastRatio": 0.8,
+                "highResolution": True,
+                "negative_prompt": "low resolution, bad quality, unrealistic"
+            }
+            response = requests.post(leonardo_url, headers=headers, json=payload)
             response.raise_for_status()
             api_response = response.json()
 
-            # 提取生成圖片的 URL
-            generated_images = api_response.get("generations_by_pk", {}).get("generated_images", [])
-            image_urls = [img.get("url") for img in generated_images if img.get("url")]
-
-            if image_urls:
-                return image_urls[0]  # 返回第一個圖片 URL
+            generation_id = api_response.get("sdGenerationJob", {}).get("generationId")
+            if generation_id:
+                image_url = fetch_generation_images(generation_id)
+                
+                if image_url:
+                    image_response = requests.get(image_url)
+                    if image_response.status_code == 200:
+                        image_path = os.path.join(save_directory, f'{article_title}_image_{idx+1}.png')
+                        with open(image_path, 'wb') as f:
+                            f.write(image_response.content)
+                        image_urls.append(image_url)
+                    else:
+                        logger.error(f"圖片下載失敗: {description}")
+                else:
+                    logger.error(f"生成圖片失敗: {description}")
             else:
-                time.sleep(5)  # 沒有圖片則延遲後重試
+                logger.error(f"Leonardo API 沒有返回 generation_id")
+        except Exception as e:
+            logger.error(f"生成圖片失敗: {str(e)}")
+        finally:
+            # 更新進度
+            with progress_lock:
+                progress_counter += 1
+                print(f"進度: {progress_counter}/{total_images} ({progress_counter/total_images*100:.2f}%)")
 
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Attempt {attempt + 1}: API request failed: {e}")
-            continue
+    threads = []
+    for article_title, descriptions in image_descriptions.items():
+        for idx, description in enumerate(descriptions):
+            thread = threading.Thread(target=generate_image, args=(article_title, description, idx))
+            threads.append(thread)
+            thread.start()
 
-    # 若所有嘗試都失敗，返回 None
-    return None
-
+    for thread in threads:
+        thread.join()
+    
+    return image_urls
 # 生成新聞相關圖片
 def generate_news():
     try:

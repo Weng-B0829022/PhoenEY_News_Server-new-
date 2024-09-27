@@ -64,3 +64,34 @@ C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_stor
 Watching for file changes with StatReloader
 C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.1334240436553955 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden (Origin checking failed - http://localhost:5174 does not match any trusted origins.): /api/execute-news-gen-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Method Not Allowed: /api/execute-news-gen-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader

@@ -12,6 +12,7 @@ import logging
 import asyncio
 import threading
 import traceback
+from asgiref.sync import async_to_sync
 
 logger = logging.getLogger(__name__)
 logger.debug("This is a debug message")
@@ -248,3 +249,32 @@ class NewsCompositeVideoView(APIView):
             global_state['status'] = 'error'
             global_state['error_message'] = str(e)
             logger.info(f"Updated global state after error: {global_state}")
+
+
+class NewsGenVideoView(APIView):
+    def post(self, request, *args, **kwargs):
+        story_object = request.data.get('story_object')
+        
+        if not story_object:
+            return JsonResponse({'error': 'Missing index parameter'}, status=400)
+        
+        # Start the asynchronous data collection process
+        async_to_sync(self.start_data_collection)(story_object)
+        
+        # Immediately return a response to the frontend
+        return JsonResponse({'message': 'Video generation started'}, status=202)
+    
+    async def start_data_collection(self, story_object):
+        # This method will run asynchronously
+        await self.collect_data(story_object)
+        await self.generate_video(story_object)
+    
+    async def collect_data(self, story_object):
+        # Simulate data collection with a delay
+        await asyncio.sleep(1)
+        print(f"Data collection completed for index: {story_object}")
+    
+    async def generate_video(self, story_object):
+        # Simulate video generation with a delay
+        await asyncio.sleep(1)
+        print(f"Video generation completed for index: {story_object}")

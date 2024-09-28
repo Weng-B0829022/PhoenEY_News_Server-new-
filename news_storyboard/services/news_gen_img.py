@@ -8,7 +8,9 @@ import time
 import logging
 from openai import OpenAI
 import threading
-import queue
+import re
+import concurrent.futures
+from collections import OrderedDict
 
 load_dotenv(os.path.join(settings.BASE_DIR, '.env'))
 # 設定 logger
@@ -25,7 +27,7 @@ def fetch_generation_images(generation_id):
         'authorization': f'Bearer {os.environ.get("LEONARDO_API_KEY")}',
     }
 
-    for attempt in range(10):
+    for attempt in range(40):
         try:
             response = requests.get(url, headers=headers)
             response.raise_for_status()
@@ -37,7 +39,7 @@ def fetch_generation_images(generation_id):
             if image_urls:
                 return image_urls[0]  # 返回第一個圖片 URL
             else:
-                print(f"等待生成圖片... 嘗試 {attempt + 1}/10")
+                print(f"等待生成圖片... 嘗試 {attempt + 1}/40")
                 time.sleep(5)  # 沒有圖片則延遲後重試
 
         except requests.exceptions.RequestException as e:
@@ -51,10 +53,10 @@ def fetch_generation_images(generation_id):
 def translate_to_english(text):
     try:
         response = client.chat.completions.create(
-            model="gpt-4o-mini",  # 使用 gpt-3.5-turbo 或 gpt-4
+            model="gpt-3.5-turbo",  # 使用 gpt-3.5-turbo 或 gpt-4
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that translates text to English."},
-                {"role": "user", "content": f"Please translate the following text to English: {text}"}
+                {"role": "user", "content": f"Please translate the following text to English. If it's already in English, return it as is: {text}"}
             ],
             max_tokens=100,
             temperature=0.5,
@@ -65,58 +67,26 @@ def translate_to_english(text):
         logger.error(f"翻譯失敗: {str(e)}")
         return text  # 如果翻譯失敗，返回原始文本
 
-# 提取 JSON 檔案並翻譯圖片描述
-def extract_image_descriptions_from_storyboard(file_path, article_index):
-    # 開啟並讀取 JSON 檔案
-    with open(file_path, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-
-    # 檢查 article_index 是否有效
-    if article_index < 0 or article_index >= len(data['articles']):
-        logger.error(f"無效的文章索引: {article_index}")
-        return None
-
-    # 提取指定索引的文章內容
-    article = data['articles'][article_index]
-    storyboard = article['storyboard']
-    lines = storyboard.split('\n')
-    images = []
-
-    for line in lines:
-        if line.startswith("Image:"):
-            # 'Image:' 後面的部分
-            image_description = line.split("Image:")[1].strip()
-            # 翻譯為英文
-            translated_description = translate_to_english(image_description)
-            images.append(translated_description)
-
-    # 返回提取到的圖片描述
-    return {article['title']: images}
-
 # 獲取生成圖片的 URL
-def generate_images_from_descriptions(image_descriptions, save_directory=os.path.join(settings.MEDIA_ROOT, 'generated_images/')):
+def generate_images_from_descriptions(title, image_descriptions, save_directory=os.path.join(settings.MEDIA_ROOT, 'generated_images/')):
     if not os.path.exists(save_directory):
         os.makedirs(save_directory)
-
-    image_urls = []
     
-    # Leonardo API 基本設置
     leonardo_url = "https://cloud.leonardo.ai/api/rest/v1/generations"
     headers = {
         'accept': 'application/json',
         'authorization': f'Bearer {os.environ.get("LEONARDO_API_KEY")}',
         'content-type': 'application/json'
     }
-
-    # 添加進度追踪
-    total_images = sum(len(descriptions) for descriptions in image_descriptions.values())
+    
+    total_images = len(image_descriptions)
     progress_counter = 0
     progress_lock = threading.Lock()
+    results = OrderedDict()
 
-    def generate_image(article_title, description, idx):
+    def generate_image(idx, description):
         nonlocal progress_counter
         try:
-            # 使用 Leonardo API 生成圖片
             payload = {
                 "prompt": description,
                 "alchemy": True,
@@ -138,7 +108,7 @@ def generate_images_from_descriptions(image_descriptions, save_directory=os.path
             response = requests.post(leonardo_url, headers=headers, json=payload)
             response.raise_for_status()
             api_response = response.json()
-
+            
             generation_id = api_response.get("sdGenerationJob", {}).get("generationId")
             if generation_id:
                 image_url = fetch_generation_images(generation_id)
@@ -146,10 +116,12 @@ def generate_images_from_descriptions(image_descriptions, save_directory=os.path
                 if image_url:
                     image_response = requests.get(image_url)
                     if image_response.status_code == 200:
-                        image_path = os.path.join(save_directory, f'{article_title}_image_{idx+1}.png')
+                        safe_title = re.sub(r'[^\w\-_\. ]', '_', title)
+                        image_filename = f'{safe_title}_{idx+1}.png'
+                        image_path = os.path.join(save_directory, image_filename)
                         with open(image_path, 'wb') as f:
                             f.write(image_response.content)
-                        image_urls.append(image_url)
+                        return idx, (image_url, image_response.content)
                     else:
                         logger.error(f"圖片下載失敗: {description}")
                 else:
@@ -159,50 +131,44 @@ def generate_images_from_descriptions(image_descriptions, save_directory=os.path
         except Exception as e:
             logger.error(f"生成圖片失敗: {str(e)}")
         finally:
-            # 更新進度
             with progress_lock:
                 progress_counter += 1
                 print(f"進度: {progress_counter}/{total_images} ({progress_counter/total_images*100:.2f}%)")
+        return idx, None
 
-    threads = []
-    for article_title, descriptions in image_descriptions.items():
-        for idx, description in enumerate(descriptions):
-            thread = threading.Thread(target=generate_image, args=(article_title, description, idx))
-            threads.append(thread)
-            thread.start()
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        future_to_idx = {executor.submit(generate_image, idx, desc): idx for idx, desc in enumerate(image_descriptions)}
+        for future in concurrent.futures.as_completed(future_to_idx):
+            idx, result = future.result()
+            if result:
+                results[idx] = result
 
-    for thread in threads:
-        thread.join()
-    
-    return image_urls
-# 生成新聞相關圖片
-def generate_news():
-    try:
-        # 設定保存圖片的路徑
-        save_directory = os.path.join(settings.MEDIA_ROOT, 'generated_images/')
-        file_path = 'derivative_articles_and_storyboards.json'
+    # 按照原始順序整理結果
+    image_results = [results[i] for i in range(len(image_descriptions)) if i in results]
 
-        # 提取圖片描述
-        image_descriptions = extract_image_descriptions_from_storyboard(file_path)
-
-        # 根據圖片描述生成圖片
-        image_urls = generate_images_from_descriptions(image_descriptions, save_directory)
-
-        return JsonResponse({'image_urls': image_urls})
-
-    except json.JSONDecodeError:
-        return JsonResponse({'error': 'Invalid JSON'}, status=400)
-    except Exception as e:
-        return JsonResponse({'error': 'An unexpected error occurred: ' + str(e)}, status=500)
-    else:
-        return JsonResponse({'error': 'Invalid request method'}, status=405)
+    return image_results
 
 # 測試新聞生成邏輯
-def run_news_gen_img(index):
-    file_path = 'derivative_articles_and_storyboards.json'
-    image_descriptions = extract_image_descriptions_from_storyboard(file_path, index)
-    image_urls = generate_images_from_descriptions(image_descriptions)
-    return image_urls
+def run_news_gen_img(storyboard_object):
+    try:
+        # 從 storyboard_object 提取圖片描述
+        image_descriptions = []
+        title = storyboard_object.get('title')
+        for item in storyboard_object.get('storyboard', []):
+            description = item.get('imageDescription')
+            if description:
+                # 翻譯為英文
+                translated_description = translate_to_english(description)
+                image_descriptions.append(translated_description)
+
+        # 根據圖片描述生成圖片
+        image_results = generate_images_from_descriptions(title, image_descriptions)
+        
+        return image_results 
+
+    except Exception as e:
+        logger.error(f"An unexpected error occurred: {str(e)}")
+        return []
 
 if __name__ == '__main__':
     run_news_gen_img()

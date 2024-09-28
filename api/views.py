@@ -7,12 +7,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.views import View
-from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, execute_news_composite_video
+from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, execute_news_gen_voice, combine_media
 import logging
-import asyncio
+import time
 import threading
 import traceback
 from asgiref.sync import async_to_sync
+import json
+from concurrent.futures import ThreadPoolExecutor
 
 logger = logging.getLogger(__name__)
 logger.debug("This is a debug message")
@@ -252,29 +254,34 @@ class NewsCompositeVideoView(APIView):
 
 
 class NewsGenVideoView(APIView):
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         story_object = request.data.get('story_object')
         
         if not story_object:
-            return JsonResponse({'error': 'Missing index parameter'}, status=400)
+            return JsonResponse({'error': 'Missing story_object parameter'}, status=400)
         
-        # Start the asynchronous data collection process
-        async_to_sync(self.start_data_collection)(story_object)
+        # 直接執行 start_data_collection 並獲取 image_urls
+        image_urls = self.start_data_collection(story_object)
         
-        # Immediately return a response to the frontend
-        return JsonResponse({'message': 'Video generation started'}, status=202)
-    
-    async def start_data_collection(self, story_object):
-        # This method will run asynchronously
-        await self.collect_data(story_object)
-        await self.generate_video(story_object)
-    
-    async def collect_data(self, story_object):
-        # Simulate data collection with a delay
-        await asyncio.sleep(1)
-        print(f"Data collection completed for index: {story_object}")
-    
-    async def generate_video(self, story_object):
-        # Simulate video generation with a delay
-        await asyncio.sleep(1)
-        print(f"Video generation completed for index: {story_object}")
+        # 立即返回 image_urls 給前端
+        return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls}, status=200)
+
+    def start_data_collection(self, story_object):
+        # 移除最後9個元素
+        story_object['storyboard'] = story_object['storyboard'][:-8]
+        
+        # 使用 ThreadPoolExecutor 異步執行圖片和聲音生成任務
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            future_img = executor.submit(execute_news_gen_img, story_object)
+            future_voice = executor.submit(execute_news_gen_voice, story_object)
+
+        # 獲取結果
+        try:
+            img_binary, result_json = future_img.result()
+            audio_byteIO = future_voice.result()  # 等待語音生成完成，但不使用其結果
+            combine_media(story_object, img_binary, audio_byteIO)
+            #print(result_json, audio_binary)
+            return result_json
+        except Exception as e:
+            print(f"Error in image or voice generation: {str(e)}")
+            return None

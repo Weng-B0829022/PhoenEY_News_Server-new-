@@ -95,3 +95,1123 @@ Watching for file changes with StatReloader
 Method Not Allowed: /api/execute-news-gen-video
 C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\翁\AppData\Local\Temp\jieba.cache
+Loading model cost 0.5955030918121338 seconds.
+Prefix dict has been built succesfully.
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 262, in post
+    async_to_sync(self.start_data_collection)(story_object)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\asgiref\sync.py", line 254, in __call__
+    return call_result.result()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\asgiref\sync.py", line 331, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 269, in start_data_collection
+    await execute_news_gen_img(story_object)
+TypeError: object dict can't be used in 'await' expression
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 262, in post
+    async_to_sync(self.start_data_collection)(story_object)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\asgiref\sync.py", line 254, in __call__
+    return call_result.result()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\asgiref\sync.py", line 331, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 268, in start_data_collection
+    story_object = story_object.storyboard[:-5]
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'storyboard'
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 262, in post
+    async_to_sync(self.start_data_collection)(story_object)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\asgiref\sync.py", line 254, in __call__
+    return call_result.result()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\asgiref\sync.py", line 331, in main_wrap
+    result = await self.awaitable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 268, in start_data_collection
+    story_object.storyboard = story_object.storyboard[:-5]
+                              ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'storyboard'
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+生成圖片失敗: name 'title' is not defined
+生成圖片失敗: name 'title' is not defined
+生成圖片失敗: name 'title' is not defined
+生成圖片失敗: name 'title' is not defined
+生成圖片失敗: name 'title' is not defined
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-video
+Unauthorized: /api/execute-news-gen-video
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 269, in post
+    return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls}, status=200)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\http\response.py", line 748, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\翁\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\serializers\json.py", line 106, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 262, in post
+    image_urls = self.start_data_collection(story_object)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 278, in start_data_collection
+    return image_urls
+           ^^^^^^^^^^
+NameError: name 'image_urls' is not defined
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 262, in post
+    image_urls = self.start_data_collection(story_object)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 278, in start_data_collection
+    return image_urls
+           ^^^^^^^^^^
+NameError: name 'image_urls' is not defined
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 262, in post
+    image_urls = self.start_data_collection(story_object)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 278, in start_data_collection
+    if result['status'] == 'success':
+       ~~~~~~^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-video
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-video
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000114B14A7350>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000114B14B89D0>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000114B14B9610>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002125465A410>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002125465B890>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002125466FD90>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-video
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002962367C7D0>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002962367D4D0>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002962367E410>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000018DB36F0810>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000018DB3F00290>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+Voice generation failed: HTTPConnectionPool(host='216.234.102.170', port=10620): Max retries exceeded with url: /set_gpt_weights?weights_path=%2Fhome%2Fuser%2FGPT-SoVITS%2FGPT_weights_v2%2Fwoman_voice1-e25.ckpt (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000018DB3F01610>: Failed to establish a new connection: [WinError 10061] 無法連線，因為目標電腦拒絕連線。'))
+Unauthorized: /api/execute-news-gen-video
+Voice generation failed: [WinError 2] 系統找不到指定的檔案。
+Voice generation failed: [WinError 2] 系統找不到指定的檔案。
+Voice generation failed: [WinError 2] 系統找不到指定的檔案。
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-video
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Voice generation failed: [WinError 2] 系統找不到指定的檔案。
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 265, in post
+    thread = threading.Thread(target=self.generate_video, args=(story_object,))
+                                     ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NewsGenVideoView' object has no attribute 'generate_video'
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 264, in post
+    image_urls = self.start_data_collection(story_object)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 275, in start_data_collection
+    future_img = executor.submit(self.execute_news_gen_img, story_object)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NewsGenVideoView' object has no attribute 'execute_news_gen_img'
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_img.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+Voice generation failed for 賀錦麗與川普首次辯論後的政治影響_1.mp3: expected str, bytes or os.PathLike object, not NoneType
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader

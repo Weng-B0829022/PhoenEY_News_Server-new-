@@ -240,7 +240,7 @@ class GetGeneratedVideoView(View):
         # 使用 os.path.basename 來確保只使用文件名部分
         safe_filename = os.path.basename(filename)
         
-        video_dir = os.path.join(settings.MEDIA_ROOT, 'generated_video')
+        video_dir = os.path.join(settings.MEDIA_ROOT, 'generated_videos')
         video_path = os.path.join(video_dir, safe_filename)
 
         # 使用 os.path.abspath 和比較來確保文件路徑不會超出預期目錄

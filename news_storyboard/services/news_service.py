@@ -60,6 +60,6 @@ def execute_news_gen_voice(storyboard_object):
         return [""]  # 返回一个包含空字符串的列表，表示出错
     
 def combine_media(storyboard, img_binary, audio_byteIO):
-    video_paths = create_videos_from_images_and_audio(storyboard, img_binary, audio_byteIO, os.path.join(settings.MEDIA_ROOT, 'generated_video/'))
+    video_paths = create_videos_from_images_and_audio(storyboard, img_binary, audio_byteIO, os.path.join(settings.MEDIA_ROOT, 'generated_videos/'))
     return video_paths.split('/')[1]
 

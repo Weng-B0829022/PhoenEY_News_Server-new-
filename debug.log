@@ -1583,3 +1583,68 @@ C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\servi
 Watching for file changes with StatReloader
 C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 203, in post
+    video_paths, image_urls = self.start_data_collection(story_object)
+    ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 203, in post
+    video_paths, image_urls = self.start_data_collection(story_object)
+    ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader

@@ -15,6 +15,10 @@ import traceback
 from asgiref.sync import async_to_sync
 import json
 from concurrent.futures import ThreadPoolExecutor
+from django.http import FileResponse, HttpResponseNotFound, HttpResponseBadRequest
+from django.conf import settings
+import os
+import re
 
 logger = logging.getLogger(__name__)
 logger.debug("This is a debug message")
@@ -187,71 +191,6 @@ class NewsGenImgView(APIView):
         else:
             return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, status=500)
 
-class NewsCompositeVideoView(APIView):
-    def post(self, request):
-        
-        logger.info("Received request for video generation")
-        try:
-            # 从查询参数中获取 index
-            index = request.query_params.get('index')
-            logger.info(f"Received index parameter: {index}")
-            
-            if index is None:
-                logger.warning("Index parameter is missing")
-                return Response({"error": "Index parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
-            
-            # 将 index 转换为整数
-            index = int(index)
-            logger.info(f"Converted index to integer: {index}")
-            
-            # 更新全局状态
-            global_state['current_step'] = 'news_composite_video'
-            global_state['status'] = 'generating'
-            global_state['error_message'] = None
-            logger.info(f"Updated global state: step={global_state['current_step']}, status={global_state['status']}")
-            
-            # 立即返回成功响应
-            response_data = {
-                "message": "Video generation started",
-                "id": index,
-                "status": "processing"
-            }
-            logger.info(f"Preparing response: {response_data}")
-            
-            # 在后台启动视频生成过程
-            logger.info(f"Starting background video generation task for index {index}")
-            threading.Thread(target=self.generate_video, args=(index,)).start()
-            
-            logger.info("Returning successful response")
-            return Response(response_data, status=status.HTTP_202_ACCEPTED)
-        
-        except ValueError:
-            logger.error(f"Invalid index value: {index}")
-            return Response({"error": "Invalid index. Must be an integer."}, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            logger.error(f"Unexpected error in NewsCompositeVideoView: {str(e)}", exc_info=True)
-            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    def generate_video(self, index):
-        logger.info(f"Starting video generation process for index {index}")
-
-        try:
-            # 执行视频生成逻辑
-            logger.info(f"Executing news_composite_video for index {index}")
-            result = execute_news_composite_video(index)
-            logger.info(f"Video generation completed for index {index}. Result: {result}")
-            
-            # 更新全局状态
-            global_state['current_step'] = 'completed'
-            global_state['news_result'] = result
-            global_state['status'] = 'completed'
-            logger.info(f"Updated global state after video generation: {global_state}")
-        except Exception as e:
-            logger.error(f"Error during video generation for index {index}: {str(e)}", exc_info=True)
-            global_state['status'] = 'error'
-            global_state['error_message'] = str(e)
-            logger.info(f"Updated global state after error: {global_state}")
-
 
 class NewsGenVideoView(APIView):
     def post(self, request):
@@ -261,14 +200,14 @@ class NewsGenVideoView(APIView):
             return JsonResponse({'error': 'Missing story_object parameter'}, status=400)
         
         # 直接執行 start_data_collection 並獲取 image_urls
-        image_urls = self.start_data_collection(story_object)
-        
+        video_paths, image_urls = self.start_data_collection(story_object)
+
         # 立即返回 image_urls 給前端
-        return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls}, status=200)
+        return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls, 'video_paths': video_paths}, status=200)
 
     def start_data_collection(self, story_object):
         # 移除最後9個元素
-        story_object['storyboard'] = story_object['storyboard'][:-8]
+        story_object['storyboard'] = story_object['storyboard'][:]
         
         # 使用 ThreadPoolExecutor 異步執行圖片和聲音生成任務
         with ThreadPoolExecutor(max_workers=2) as executor:
@@ -277,11 +216,41 @@ class NewsGenVideoView(APIView):
 
         # 獲取結果
         try:
-            img_binary, result_json = future_img.result()
+            img_binary, image_urls = future_img.result()
             audio_byteIO = future_voice.result()  # 等待語音生成完成，但不使用其結果
-            combine_media(story_object, img_binary, audio_byteIO)
-            #print(result_json, audio_binary)
-            return result_json
+            video_paths = combine_media(story_object, img_binary, audio_byteIO)
+            return video_paths, image_urls
         except Exception as e:
             print(f"Error in image or voice generation: {str(e)}")
             return None
+
+class GetGeneratedVideoView(View):
+    def get(self, request):
+        filename = request.GET.get('filename')
+        
+        if not filename:
+            logger.warning("Missing filename parameter in request")
+            return HttpResponseBadRequest("Missing filename parameter")
+
+        # 使用正則表達式驗證文件名格式
+        if not re.match(r'^[\w\-. ]+\.mp4$', filename):
+            logger.warning(f"Invalid filename format: {filename}")
+            return HttpResponseBadRequest("Invalid filename format")
+
+        # 使用 os.path.basename 來確保只使用文件名部分
+        safe_filename = os.path.basename(filename)
+        
+        video_dir = os.path.join(settings.MEDIA_ROOT, 'generated_video')
+        video_path = os.path.join(video_dir, safe_filename)
+
+        # 使用 os.path.abspath 和比較來確保文件路徑不會超出預期目錄
+        if not os.path.abspath(video_path).startswith(os.path.abspath(video_dir)):
+            logger.warning(f"Attempted directory traversal: {filename}")
+            return HttpResponseBadRequest("Invalid filename")
+
+        if os.path.exists(video_path):
+            logger.info(f"Serving video file: {video_path}")
+            return FileResponse(open(video_path, 'rb'), content_type='video/mp4')
+        else:
+            logger.warning(f"Video file not found: {video_path}")
+            return HttpResponseNotFound("Video not found")

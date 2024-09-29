@@ -42,17 +42,21 @@ def run_news_gen_voice(storyboard_object):
         if text:
             voice_texts.append(text)
 
-    results = []
+    results = [None] * len(voice_texts)  # Pre-allocate the results list
+    save_directory = os.path.join(settings.MEDIA_ROOT, 'generated_voices')
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
-        future_to_idx = {executor.submit(generate_voice, text, f'{safe_title}_{idx+1}.mp3', None): idx 
+        future_to_idx = {executor.submit(generate_voice, text, f'{safe_title}_{idx+1}.mp3', save_directory): idx
                         for idx, text in enumerate(voice_texts)}
         
         for future in concurrent.futures.as_completed(future_to_idx):
             idx = future_to_idx[future]
             result = future.result()
             if result:
-                results.append(result)
+                results[idx] = result  # Place the result in its original position
+
+    # Remove any None values (failed generations)
+    results = [r for r in results if r is not None]
 
     return results
 

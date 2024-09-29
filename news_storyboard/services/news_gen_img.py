@@ -39,7 +39,7 @@ def fetch_generation_images(generation_id):
             if image_urls:
                 return image_urls[0]  # 返回第一個圖片 URL
             else:
-                print(f"等待生成圖片... 嘗試 {attempt + 1}/40")
+                #print(f"等待生成圖片... 嘗試 {attempt + 1}/40")
                 time.sleep(5)  # 沒有圖片則延遲後重試
 
         except requests.exceptions.RequestException as e:

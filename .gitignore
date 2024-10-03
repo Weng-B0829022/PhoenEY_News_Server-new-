@@ -3,6 +3,7 @@ __pycache__
 db.sqlite3
 .env
 venv/
+generated
 generated_images
 generated_videos
 ffmpeg.exe

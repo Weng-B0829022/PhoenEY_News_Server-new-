@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.views import View
-from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, execute_news_gen_voice, combine_media
+from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, execute_news_gen_voice_and_video, combine_media, execute_storyboard_manager
 import logging
 import time
 import threading
@@ -19,6 +19,12 @@ from django.http import FileResponse, HttpResponseNotFound, HttpResponseBadReque
 from django.conf import settings
 import os
 import re
+import random
+import string
+
+def generate_random_id(length=10):
+    """生成指定長度的隨機字母數字字符串"""
+    return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
 
 logger = logging.getLogger(__name__)
 logger.debug("This is a debug message")
@@ -200,26 +206,33 @@ class NewsGenVideoView(APIView):
             return JsonResponse({'error': 'Missing story_object parameter'}, status=400)
         
         # 直接執行 start_data_collection 並獲取 image_urls
-        video_paths, image_urls = self.start_data_collection(story_object)
-
+        #video_path, image_urls = self.start_data_collection(story_object)
+        image_urls = self.start_data_collection(story_object)
         # 立即返回 image_urls 給前端
-        return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls, 'video_paths': video_paths}, status=200)
+        #return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls, 'video_path': video_path}, status=200)
+        return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls}, status=200)
 
     def start_data_collection(self, story_object):
-        # 移除最後9個元素
-        story_object['storyboard'] = story_object['storyboard'][:]
         
+        # 移除最後9個元素
+        story_object['storyboard'] = story_object['storyboard'][:-8]
+        random_id = 'eu7ic237fc'#generate_random_id()#每次生成給予專屬id
+
+        manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, None)
+        #video_path = combine_media(manager, {})
         # 使用 ThreadPoolExecutor 異步執行圖片和聲音生成任務
-        with ThreadPoolExecutor(max_workers=2) as executor:
-            future_img = executor.submit(execute_news_gen_img, story_object)
-            future_voice = executor.submit(execute_news_gen_voice, story_object)
+        #with ThreadPoolExecutor(max_workers=2) as executor:
+        #    future_img = executor.submit(execute_news_gen_img, manager, story_object, random_id)
+        #    future_voice_and_video = executor.submit(execute_news_gen_voice_and_video, manager,  story_object, random_id)
 
         # 獲取結果
         try:
-            img_binary, image_urls = future_img.result()
-            audio_byteIO = future_voice.result()  # 等待語音生成完成，但不使用其結果
-            video_paths = combine_media(story_object, img_binary, audio_byteIO)
-            return video_paths, image_urls
+            #img_binary, image_urls = future_img.result()
+            #audios_path = future_voice_and_video.result()  # 等待語音生成完成，但不使用其結果
+            custom_setting = {}
+            video_path = combine_media(manager, custom_setting)
+            return []
+            #return video_path, image_urls
         except Exception as e:
             print(f"Error in image or voice generation: {str(e)}")
             return None

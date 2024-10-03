@@ -3,7 +3,7 @@
 from .newsapi import run_newsapi
 from .news_gen import run_news_gen
 from .news_gen_img import run_news_gen_img
-from .news_gen_voice import run_news_gen_voice
+from .news_gen_voice_and_video import run_news_gen_voice_and_video
 import base64
 import io
 from pydub import AudioSegment
@@ -11,6 +11,8 @@ import re
 import os 
 from django.conf import settings
 from .create_scene import create_videos_from_images_and_audio
+from .storyboard_manager import StoryboardManager
+import shutil
 
 def execute_newsapi(keyword):
     try:
@@ -26,9 +28,9 @@ def execute_news_gen():
     except Exception as e:
         return {"status": "error", "message": str(e)}
     
-def execute_news_gen_img(storyboard_object):
+def execute_news_gen_img(manager, storyboard_object, random_id):
     try:
-        result = run_news_gen_img(storyboard_object)
+        result = run_news_gen_img(manager, storyboard_object, random_id)
         
         # 处理结果，分离 URL 和图片数据
         processed_result = []
@@ -51,15 +53,24 @@ def execute_news_gen_img(storyboard_object):
         print(str(e))
         return (None, {"status": "error", "message": str(e)})
     
-def execute_news_gen_voice(storyboard_object):
+def execute_news_gen_voice_and_video(manager, storyboard_object, random_id):
     try:
-        audio_binary = run_news_gen_voice(storyboard_object)
+        audios_path = run_news_gen_voice_and_video(manager, storyboard_object, random_id)
 
-        return audio_binary
+        return audios_path
     except Exception as e:
         return [""]  # 返回一个包含空字符串的列表，表示出错
     
-def combine_media(storyboard, img_binary, audio_byteIO):
-    video_paths = create_videos_from_images_and_audio(storyboard, img_binary, audio_byteIO, os.path.join(settings.MEDIA_ROOT, 'generated_videos/'))
-    return video_paths.split('/')[1]
+def combine_media(manager, custom_setting):
+    #manager.custom_setting(custom_setting)
+    #manager.set_background_config('background.webp', width=1024, height=1024)
+    #manager.add_background_to_all_paragraphs()#設定背景
+    #shutil.copy2(os.path.join(settings.BASE_DIR, 'background.webp'), os.path.join(settings.BASE_DIR, 'generated', str(random_id), 'background.webp'))
+
+
+    video_paths = create_videos_from_images_and_audio(manager)
+    #return video_paths.split('/')[1]
+
+def execute_storyboard_manager(file_path, random_id, initial_storyboard=None):
+    return StoryboardManager(file_path, random_id, initial_storyboard)
 

@@ -68,7 +68,8 @@ def translate_to_english(text):
         return text  # 如果翻譯失敗，返回原始文本
 
 # 獲取生成圖片的 URL
-def generate_images_from_descriptions(title, image_descriptions, save_directory=os.path.join(settings.MEDIA_ROOT, 'generated_images/')):
+def generate_images_from_descriptions(title, image_descriptions, random_id):
+    save_directory=os.path.join(settings.MEDIA_ROOT, 'generated', random_id)
     if not os.path.exists(save_directory):
         os.makedirs(save_directory)
     
@@ -108,11 +109,11 @@ def generate_images_from_descriptions(title, image_descriptions, save_directory=
             response = requests.post(leonardo_url, headers=headers, json=payload)
             response.raise_for_status()
             api_response = response.json()
-            
+
             generation_id = api_response.get("sdGenerationJob", {}).get("generationId")
             if generation_id:
                 image_url = fetch_generation_images(generation_id)
-                
+
                 if image_url:
                     image_response = requests.get(image_url)
                     if image_response.status_code == 200:
@@ -121,7 +122,9 @@ def generate_images_from_descriptions(title, image_descriptions, save_directory=
                         image_path = os.path.join(save_directory, image_filename)
                         with open(image_path, 'wb') as f:
                             f.write(image_response.content)
-                        return idx, (image_url, image_response.content)
+
+                        # 只保留檔名，不包含路徑
+                        return idx, (image_url, image_filename)
                     else:
                         logger.error(f"圖片下載失敗: {description}")
                 else:
@@ -149,20 +152,38 @@ def generate_images_from_descriptions(title, image_descriptions, save_directory=
     return image_results
 
 # 測試新聞生成邏輯
-def run_news_gen_img(storyboard_object):
+def run_news_gen_img(manager, storyboard_object, random_id):
     try:
         # 從 storyboard_object 提取圖片描述
         image_descriptions = []
         title = storyboard_object.get('title')
-        for item in storyboard_object.get('storyboard', []):
+        for idx, item in enumerate(storyboard_object.get('storyboard', [])):
             description = item.get('imageDescription')
             if description:
                 # 翻譯為英文
                 translated_description = translate_to_english(description)
-                image_descriptions.append(translated_description)
+                image_descriptions.append((idx, translated_description))
 
         # 根據圖片描述生成圖片
-        image_results = generate_images_from_descriptions(title, image_descriptions)
+        image_results = generate_images_from_descriptions(title, [desc for _, desc in image_descriptions], random_id)
+        
+        # 更新 storyboard
+        for (idx, _), result in zip(image_descriptions, image_results):
+            if result:
+                image_url, image_path = result
+                image_info = {
+                    "img_path": image_path,
+                    "url": image_url,
+                    "top-left": [234, 265],
+                    "top-right": [844, 265],
+                    "bottom-right": [844, 635],
+                    "bottom-left": [234, 635],
+                    "z_index": 0
+                }
+                manager.update_paragraph(idx, {"images": [image_info]})
+        
+        # 等待所有更新完成
+        manager.wait_for_queue()
         
         return image_results 
 

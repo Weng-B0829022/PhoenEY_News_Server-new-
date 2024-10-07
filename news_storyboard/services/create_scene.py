@@ -1,9 +1,36 @@
 import cv2
 import numpy as np
-from moviepy.editor import VideoFileClip, AudioFileClip
+from moviepy.editor import VideoFileClip, AudioFileClip, CompositeAudioClip
+from moviepy.editor import concatenate_videoclips
 import os
 from django.conf import settings
 
+
+def combine_videos(output_dir, num_paragraphs):
+    video_clips = []
+    for i in range(1, num_paragraphs + 1):
+        video_path = os.path.join(output_dir, f"final_output_paragraph_{i}.mp4")
+        video = VideoFileClip(video_path)
+        # Ensure the video has audio
+        if video.audio is None:
+            print(f"Warning: Video {i} does not have audio.")
+        video_clips.append(video)
+    
+    final_video = concatenate_videoclips(video_clips)
+    
+    # Ensure the final video has audio
+    if final_video.audio is None:
+        print("Warning: The combined video does not have audio. Creating a silent audio track.")
+        final_video = final_video.set_audio(CompositeAudioClip([]))
+    
+    final_output_path = os.path.join(output_dir, "final_combined_video.mp4")
+    final_video.write_videofile(final_output_path, codec="libx264", audio_codec="aac")
+    
+    for clip in video_clips:
+        clip.close()
+    
+    print(f"All videos combined into: {final_output_path}")
+    
 def compose_background_with_scene(background_image, scene_image, scene_coords):
     with open(background_image, 'rb') as f:
         background_bytes = np.asarray(bytearray(f.read()), dtype=np.uint8)
@@ -112,6 +139,12 @@ def create_videos_from_images_and_audio(manager):
         print(f"Video processing complete for paragraph {idx + 1}")
     
     print("All videos processed successfully!")
+
+    # Combine all videos into one final video
+    num_paragraphs = len(storyboard["storyboard"])
+    combine_videos(output_dir, num_paragraphs)
+    
+    print("Final combined video created successfully!")
 
 if __name__ == "__main__":
     create_videos_from_images_and_audio()

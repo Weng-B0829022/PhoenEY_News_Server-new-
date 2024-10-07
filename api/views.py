@@ -215,22 +215,22 @@ class NewsGenVideoView(APIView):
     def start_data_collection(self, story_object):
         
         # 移除最後9個元素
-        story_object['storyboard'] = story_object['storyboard'][:-8]
-        random_id = 'eu7ic237fc'#generate_random_id()#每次生成給予專屬id
+        story_object['storyboard'] = story_object['storyboard'][:-5]
+        random_id = generate_random_id()#每次生成給予專屬id
 
-        manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, None)
+        manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, story_object)
         #video_path = combine_media(manager, {})
         # 使用 ThreadPoolExecutor 異步執行圖片和聲音生成任務
-        #with ThreadPoolExecutor(max_workers=2) as executor:
-        #    future_img = executor.submit(execute_news_gen_img, manager, story_object, random_id)
-        #    future_voice_and_video = executor.submit(execute_news_gen_voice_and_video, manager,  story_object, random_id)
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            future_img = executor.submit(execute_news_gen_img, manager, story_object, random_id)
+            future_voice_and_video = executor.submit(execute_news_gen_voice_and_video, manager,  story_object, random_id)
 
         # 獲取結果
         try:
-            #img_binary, image_urls = future_img.result()
-            #audios_path = future_voice_and_video.result()  # 等待語音生成完成，但不使用其結果
+            img_binary, image_urls = future_img.result()
+            audios_path = future_voice_and_video.result()  # 等待語音生成完成，但不使用其結果
             custom_setting = {}
-            video_path = combine_media(manager, custom_setting)
+            video_path = combine_media(manager, random_id, custom_setting)
             return []
             #return video_path, image_urls
         except Exception as e:

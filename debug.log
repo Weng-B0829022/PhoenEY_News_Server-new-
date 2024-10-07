@@ -3502,3 +3502,127 @@ C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\servi
 Watching for file changes with StatReloader
 C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.0862481594085693 seconds.
+Prefix dict has been built succesfully.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.118943691253662 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.041703701019287 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 0.9636359214782715 seconds.
+Prefix dict has been built succesfully.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.1081724166870117 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.013582706451416 seconds.
+Prefix dict has been built succesfully.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.2217729091644287 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.2747762203216553 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+Bad Request: /api/execute-newsapi
+Bad Request: /api/execute-newsapi
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 0.9482293128967285 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 0.9413816928863525 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 0.9561700820922852 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.0821630954742432 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen.py changed, reloading.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 0.9851679801940918 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-video

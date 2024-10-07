@@ -24,16 +24,43 @@ Choose the five most relevant types from the provided list.
 
 Generate a detailed article (300 words) and title for each selected type.
 
-Please provide your response strictly in the following JSON format:
+Based on the provided news content, please complete the following tasks:
+
+1. Integrate the facts and write a detailed news article.
+2. Generate a suitable title for this article.
+3. Categorize the news into one of the following categories: Business, Entertainment, General, Health, Science, Sports, Technology.
+4. Based on the original news, choose the five most relevant types of derivative news articles from the list provided earlier, and generate a detailed article (about 300 words) and title for each type.
+
+Please integrate all content into a single JSON object, strictly following this format:
+
 {
-    "category": "xxxxx",
-    "articles":[
-        {"title": "Title of the Article", "content": "Detailed content of the article"},
-        {"title": "Title of the Article", "content": "Detailed content of the article"},
-        {"title": "Title of the Article", "content": "Detailed content of the article"},
-        {"title": "Title of the Article", "content": "Detailed content of the article"},
-        {"title": "Title of the Article", "content": "Detailed content of the article"}
+    "main_article": {
+        "title": "Title of the original news article",
+        "content": "Detailed content of the original news article",
+        "category": "News category (choose from the provided categories)"
+    },
+    "articles": [
+        {
+            "title": "Title of the first derivative article",
+            "content": "Content of the first derivative article (about 300 words)"
+        },
+        {
+            "title": "Title of the second derivative article",
+            "content": "Content of the second derivative article (about 300 words)"
+        },
+        {
+            "title": "Title of the third derivative article",
+            "content": "Content of the third derivative article (about 300 words)"
+        },
+        {
+            "title": "Title of the fourth derivative article",
+            "content": "Content of the fourth derivative article (about 300 words)"
+        },
+        {
+            "title": "Title of the fifth derivative article",
+            "content": "Content of the fifth derivative article (about 300 words)"
+        }
     ]
 }
 
-Don't display ```json.
+Please ensure that you generate only one complete JSON object, without any additional text, summaries, or explanations. All content should be in the same language as the original news.

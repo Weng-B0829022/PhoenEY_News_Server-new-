@@ -61,11 +61,11 @@ def execute_news_gen_voice_and_video(manager, storyboard_object, random_id):
     except Exception as e:
         return [""]  # 返回一个包含空字符串的列表，表示出错
     
-def combine_media(manager, custom_setting):
+def combine_media(manager, random_id, custom_setting):
     #manager.custom_setting(custom_setting)
-    #manager.set_background_config('background.webp', width=1024, height=1024)
-    #manager.add_background_to_all_paragraphs()#設定背景
-    #shutil.copy2(os.path.join(settings.BASE_DIR, 'background.webp'), os.path.join(settings.BASE_DIR, 'generated', str(random_id), 'background.webp'))
+    manager.set_background_config('background.webp', width=1024, height=1024)
+    manager.add_background_to_all_paragraphs()#設定背景
+    shutil.copy2(os.path.join(settings.BASE_DIR, 'background.webp'), os.path.join(settings.BASE_DIR, 'generated', str(random_id), 'background.webp'))
 
 
     video_paths = create_videos_from_images_and_audio(manager)

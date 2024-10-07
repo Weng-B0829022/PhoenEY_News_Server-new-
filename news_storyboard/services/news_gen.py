@@ -95,9 +95,13 @@ def extract_keyword_news_fact(articles):
     PROMPT_EXTRACT_AND_INTEGRATE_4 = read_file('4.txt')
     PROMPT_EXTRACT_AND_INTEGRATE_5 = read_file('5.txt')
 
+    print("Step 1: Reading prompts completed")
+
     content = ''
     for article in articles:
         content = content + article.get('content')
+
+    print("Step 2: Concatenated article contents")
 
     gpt_messages = []
 
@@ -114,6 +118,8 @@ def extract_keyword_news_fact(articles):
     })
 
     extracted_fact = access_gpt(gpt_messages)
+    print("Step 3: Extracted news fact")
+    print(f"Extracted fact: {extracted_fact[:100]}...") # Print first 100 characters
  
     gpt_messages.append({
         'role': 'user',
@@ -127,6 +133,8 @@ def extract_keyword_news_fact(articles):
         'content': prompt_integrate_news,
     })
     integrated_news = access_gpt(gpt_messages)
+    print("Step 4: Integrated multiple related news")
+    print(f"Integrated news: {integrated_news[:100]}...") # Print first 100 characters
 
     # Generate derivative news articles
     prompt_derivative_articles = PROMPT_EXTRACT_AND_INTEGRATE_4
@@ -135,35 +143,41 @@ def extract_keyword_news_fact(articles):
         'content': prompt_derivative_articles,
     })
     derivative_articles = access_gpt(gpt_messages)
+    print("Step 5: Generated derivative news articles")
+    print(f"Derivative articles: {derivative_articles[:100]}...") # Print first 100 characters
+    
+    # Parse the JSON string returned by GPT
+    try:
+        derivative_articles_json = json.loads(derivative_articles)
+        print("Step 6: Successfully parsed JSON from GPT response")
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON: {e}")
+        print(f"Raw GPT response: {derivative_articles}")
+        raise
+
+    print("Derivative articles JSON structure:")
+    print(json.dumps(derivative_articles_json, indent=2, ensure_ascii=False)[:500] + "...") # Print first 500 characters
 
     derivative_articles_path = os.path.join(settings.BASE_DIR, 'news_storyboard', 'services', 'derivative_articles.json')
     with open(derivative_articles_path, 'w', encoding='utf-8') as file:
-        json.dump(derivative_articles, file, ensure_ascii=False, indent=4)
-
-    with open(derivative_articles_path, 'r', encoding='utf-8') as file:
-        derivative_articles_json = json.load(file)
-        derivative_articles_json = json.loads(derivative_articles_json)
+        json.dump(derivative_articles_json, file, ensure_ascii=False, indent=4)
+    print(f"Step 7: Wrote derivative articles to {derivative_articles_path}")
 
     # Generate storyboards
-    output = {
-        'category': derivative_articles_json.get('category'),
-        'articles': []
-    }
-    for article in derivative_articles_json.get('articles'):
+    output = derivative_articles_json
+    for i, article in enumerate(output['articles'], 1):
         prompt_generate_storyboard = 'Article: ' + article.get('content') + PROMPT_EXTRACT_AND_INTEGRATE_5
         gpt_messages = [{
             'role': 'user',
             'content': prompt_generate_storyboard,
         }]
         storyboard = access_gpt(gpt_messages)
-        output['articles'].append({
-            'title': article.get('title'),
-            'content': article.get('content'),
-            'storyboard': storyboard
-        })
+        article['storyboard'] = storyboard
+        print(f"Step 8.{i}: Generated storyboard for article {i}")
+        print(f"Storyboard for article {i}: {storyboard[:100]}...") # Print first 100 characters
 
+    print("Step 9: Completed processing all articles")
     return output
-
 
 def fetch_financial_data():
     PROMPT_FINANCIAL_DATA = None

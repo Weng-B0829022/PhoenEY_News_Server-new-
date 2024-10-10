@@ -105,18 +105,17 @@ class StoryboardManager:
         if paragraph_index < len(self.storyboard["storyboard"]):
             self.storyboard["storyboard"][paragraph_index]["video"] = video
             self.save_storyboard()
-    def set_background_config(self, img_path, width=1024, height=1024):
-        self.background_config = {
+    def set_image_config(self, img_path, top_left=(0, 0), width=1024, height=1024, z_index=-1):
+        self.img_config =  {
             "img_path": img_path,
-            "top-left": [0, 0],
-            "top-right": [width, 0],
-            "bottom-right": [width, height],
-            "bottom-left": [0, height],
-            "z_index": -1
+            "top-left": list(top_left),
+            "top-right": [top_left[0] + width, top_left[1]],
+            "bottom-right": [top_left[0] + width, top_left[1] + height],
+            "bottom-left": [top_left[0], top_left[1] + height],
+            "z_index": z_index
         }
-
-    def add_background_to_all_paragraphs(self):
-        if not self.background_config:
+    def add_config_to_all_paragraphs(self):
+        if not self.img_config:
             print("Error: Background configuration not set. Use set_background_config() first.")
             return
         for paragraph in self.storyboard["storyboard"]:
@@ -124,7 +123,7 @@ class StoryboardManager:
                 paragraph["images"] = []
 
             # 檢查是否已有圖片，並添加背景到最後而不覆蓋
-            paragraph["images"].insert(0, self.background_config)
+            paragraph["images"].insert(0, self.img_config)
 
         self.save_storyboard()
 

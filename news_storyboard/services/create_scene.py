@@ -5,70 +5,115 @@ from moviepy.editor import concatenate_videoclips
 import os
 from django.conf import settings
 
-
 def combine_videos(output_dir, num_paragraphs):
+    """
+    Combines multiple video clips into a single video file.
+    
+    :param output_dir: Directory containing the input video files and where the output will be saved
+    :param num_paragraphs: Number of video clips to combine
+    """
     video_clips = []
     for i in range(1, num_paragraphs + 1):
         video_path = os.path.join(output_dir, f"final_output_paragraph_{i}.mp4")
         video = VideoFileClip(video_path)
-        # Ensure the video has audio
+        # Check if the video has audio
         if video.audio is None:
             print(f"Warning: Video {i} does not have audio.")
         video_clips.append(video)
     
+    # Concatenate all video clips
     final_video = concatenate_videoclips(video_clips)
     
-    # Ensure the final video has audio
+    # Ensure the final video has audio, create a silent track if necessary
     if final_video.audio is None:
         print("Warning: The combined video does not have audio. Creating a silent audio track.")
         final_video = final_video.set_audio(CompositeAudioClip([]))
     
     final_output_path = os.path.join(output_dir, "final_combined_video.mp4")
+    # Write the final video to file
     final_video.write_videofile(final_output_path, codec="libx264", audio_codec="aac")
     
+    # Close all video clips to free up resources
     for clip in video_clips:
         clip.close()
     
     print(f"All videos combined into: {final_output_path}")
+
+def compose_background_with_scenes(output_dir, images):
+    """
+    Composes multiple images based on their z-index and coordinates.
     
-def compose_background_with_scene(background_image, scene_image, scene_coords):
-    with open(background_image, 'rb') as f:
-        background_bytes = np.asarray(bytearray(f.read()), dtype=np.uint8)
-        background = cv2.imdecode(background_bytes, cv2.IMREAD_UNCHANGED)
-    if background is None:
-        print(f"Error: Could not read background image: {background_image}")
-        return None
-    background = cv2.cvtColor(background, cv2.COLOR_BGR2RGB)
+    :param output_dir: Directory containing the image files
+    :param images: List of image dictionaries containing path and coordinate information
+    :return: Composed image or None if an error occurs
+    """
+    # Initialize a blank canvas (assuming 1024x1024 as the base size)
+    canvas = np.zeros((1024, 1024, 4), dtype=np.uint8)
     
-    with open(scene_image, 'rb') as f:
-        scene_bytes = np.asarray(bytearray(f.read()), dtype=np.uint8)
-        scene = cv2.imdecode(scene_bytes, cv2.IMREAD_UNCHANGED)
-    if scene is None:
-        print(f"Error: Could not read scene image: {scene_image}")
-        return None
+    # Sort images by z-index (lowest to highest)
+    sorted_images = sorted(images, key=lambda x: x.get('z_index', 0))
     
-    scene = cv2.cvtColor(scene, cv2.COLOR_BGRA2RGBA if scene.shape[2] == 4 else cv2.COLOR_BGR2RGBA)
+    for img_info in sorted_images:
+        img_path = os.path.join(output_dir, img_info["img_path"])
+        
+        # Read image
+        with open(img_path, 'rb') as f:
+            img_bytes = np.asarray(bytearray(f.read()), dtype=np.uint8)
+            img = cv2.imdecode(img_bytes, cv2.IMREAD_UNCHANGED)
+        if img is None:
+            print(f"Error: Could not read image: {img_path}")
+            continue
+        
+        # Convert to RGBA if necessary
+        if img.shape[2] == 3:
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGBA)
+        elif img.shape[2] == 4:
+            img = cv2.cvtColor(img, cv2.COLOR_BGRA2RGBA)
+        
+        # Get coordinates
+        top_left = img_info["top-left"]
+        bottom_right = img_info["bottom-right"]
+        width = bottom_right[0] - top_left[0]
+        height = bottom_right[1] - top_left[1]
+        
+        # Resize image if necessary
+        if img.shape[:2] != (height, width):
+            img = cv2.resize(img, (width, height))
+        
+        # Create a mask for the image
+        mask = img[:,:,3] / 255.0
+        mask = np.dstack([mask]*3)
+        
+        # Blend the image onto the canvas
+        canvas_section = canvas[top_left[1]:bottom_right[1], top_left[0]:bottom_right[0], :3]
+        img_rgb = img[:,:,:3]
+        canvas[top_left[1]:bottom_right[1], top_left[0]:bottom_right[0], :3] = \
+            img_rgb * mask + canvas_section * (1 - mask)
+        
+        # Update alpha channel
+        canvas[top_left[1]:bottom_right[1], top_left[0]:bottom_right[0], 3] = \
+            np.maximum(canvas[top_left[1]:bottom_right[1], top_left[0]:bottom_right[0], 3], img[:,:,3])
     
-    top_left, top_right, bottom_right, bottom_left = scene_coords
-    width = top_right[0] - top_left[0]
-    height = bottom_left[1] - top_left[1]
-    scene_resized = cv2.resize(scene, (width, height))
-    
-    for c in range(3):
-        background[top_left[1]:bottom_left[1], top_left[0]:top_right[0], c] = (
-            background[top_left[1]:bottom_left[1], top_left[0]:top_right[0], c] * (1 - scene_resized[:,:,3]/255.0) + 
-            scene_resized[:,:,c] * (scene_resized[:,:,3]/255.0)
-        )
-    
-    return background
+    return cv2.cvtColor(canvas, cv2.COLOR_RGBA2RGB)
 
 def replace_background(input_video, output_video, threshold, composed_background, crop_coords, placement_coords):
+    """
+    Replaces the background of a video with a composed background image.
+    
+    :param input_video: Path to the input video file
+    :param output_video: Path to save the output video file
+    :param threshold: Threshold for background removal
+    :param composed_background: Composed background image
+    :param crop_coords: Coordinates for cropping the input video
+    :param placement_coords: Coordinates for placing the video on the background
+    """
     cap = cv2.VideoCapture(input_video)
     fps = int(cap.get(cv2.CAP_PROP_FPS))
     x, y, w, h = crop_coords
     bg_height, bg_width = composed_background.shape[:2]
     px, py = placement_coords
     
+    # Set up video writer
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     temp_output = os.path.join(os.path.dirname(output_video), f'temp_{os.path.basename(output_video)}')
     out = cv2.VideoWriter(temp_output, fourcc, fps, (bg_width, bg_height), isColor=True)
@@ -78,6 +123,7 @@ def replace_background(input_video, output_video, threshold, composed_background
         if not ret:
             break
         
+        # Process each frame
         frame = cv2.cvtColor(frame[y:y+h, x:x+w], cv2.COLOR_BGR2RGB)
         gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
         mask = np.where(gray < threshold, 0, 255).astype('uint8')
@@ -86,6 +132,7 @@ def replace_background(input_video, output_video, threshold, composed_background
         foreground = frame * blurred_mask[:,:,np.newaxis]
         bg_copy = composed_background.copy()
         
+        # Blend foreground with background
         py_end, px_end = min(py + h, bg_height), min(px + w, bg_width)
         blend_h, blend_w = py_end - py, px_end - px
         
@@ -99,6 +146,7 @@ def replace_background(input_video, output_video, threshold, composed_background
     cap.release()
     out.release()
     
+    # Add original audio to the processed video
     video = VideoFileClip(temp_output)
     audio = AudioFileClip(input_video)
     final_video = video.set_audio(audio)
@@ -108,27 +156,27 @@ def replace_background(input_video, output_video, threshold, composed_background
     audio.close()
     os.remove(temp_output)
 
+
+
 def create_videos_from_images_and_audio(manager):
+    """
+    Creates videos by combining background images, scene images, and avatar videos.
+    
+    :param manager: Manager object containing the storyboard and other necessary information
+    """
     storyboard = manager.get_storyboard()
     output_dir = os.path.join(settings.BASE_DIR, 'generated', storyboard['random_id'])
     
     for idx, paragraph in enumerate(storyboard["storyboard"]):
         print(f"Processing paragraph {idx + 1}...")
         
-        background_image = os.path.join(output_dir, paragraph["images"][0]["img_path"])
-        scene_image = os.path.join(output_dir, paragraph["images"][1]["img_path"])
-        scene_coords = [
-            paragraph["images"][1]["top-left"],
-            paragraph["images"][1]["top-right"],
-            paragraph["images"][1]["bottom-right"],
-            paragraph["images"][1]["bottom-left"]
-        ]
-        
-        composed_background = compose_background_with_scene(background_image, scene_image, scene_coords)
+        # Compose background with all images
+        composed_background = compose_background_with_scenes(output_dir, paragraph["images"])
         if composed_background is None:
             print(f"Error: Failed to compose background for paragraph {idx + 1}")
             continue
         
+        # Process video
         input_video = os.path.join(output_dir, paragraph["video"]["avatar_path"])
         output_video = os.path.join(output_dir, f"final_output_paragraph_{idx + 1}.mp4")
         crop_coords = (808, 147, 256, 883)

@@ -215,7 +215,7 @@ class NewsGenVideoView(APIView):
     def start_data_collection(self, story_object):
         
         # 移除最後9個元素
-        story_object['storyboard'] = story_object['storyboard'][:-5]
+        story_object['storyboard'] = story_object['storyboard'][:]
         random_id = generate_random_id()#每次生成給予專屬id
 
         manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, story_object)
@@ -226,7 +226,7 @@ class NewsGenVideoView(APIView):
             future_voice_and_video = executor.submit(execute_news_gen_voice_and_video, manager,  story_object, random_id)
 
         # 獲取結果
-        try:
+        try: 
             img_binary, image_urls = future_img.result()
             audios_path = future_voice_and_video.result()  # 等待語音生成完成，但不使用其結果
             custom_setting = {}

@@ -3901,3 +3901,330 @@ Building prefix dict from C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-
 Loading model from cache C:\Users\翁\AppData\Local\Temp\jieba.cache
 Loading model cost 0.5397567749023438 seconds.
 Prefix dict has been built succesfully.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\翁\AppData\Local\Temp\jieba.cache
+Loading model cost 0.49185943603515625 seconds.
+Prefix dict has been built succesfully.
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\storyboard_manager.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\storyboard_manager.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\storyboard_manager.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\news_gen_voice_and_video.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\storyboard_manager.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 210, in post
+    image_urls = self.start_data_collection(story_object)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 221, in start_data_collection
+    manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, None)
+                                                                                                               ^^^^^^
+NameError: name 'Nㄍㄟ' is not defined
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+Error processing paragraph 3: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 4: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 5: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 6: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 7: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 8: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 9: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 10: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 3 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 4 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 5 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 6 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 7 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 8 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 9 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 10 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+Error processing paragraph 3: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 4: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 5: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 6: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 7: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 8: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 9: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 10: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 3 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 4 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 5 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 6 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 7 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 8 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 9 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 10 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-video
+Error processing paragraph 3: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 4: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 5: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 6: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 7: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 8: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 9: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 10: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 3 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Exception details:
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py", line 49, in combine_videos
+    video = VideoFileClip(blank_frame).set_duration(audio.duration).set_audio(audio)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 244, in ffmpeg_parse_infos
+    is_GIF = filename.endswith('.gif')
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 4 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Exception details:
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py", line 49, in combine_videos
+    video = VideoFileClip(blank_frame).set_duration(audio.duration).set_audio(audio)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 244, in ffmpeg_parse_infos
+    is_GIF = filename.endswith('.gif')
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 5 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Exception details:
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py", line 49, in combine_videos
+    video = VideoFileClip(blank_frame).set_duration(audio.duration).set_audio(audio)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 244, in ffmpeg_parse_infos
+    is_GIF = filename.endswith('.gif')
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 6 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Exception details:
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py", line 49, in combine_videos
+    video = VideoFileClip(blank_frame).set_duration(audio.duration).set_audio(audio)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 244, in ffmpeg_parse_infos
+    is_GIF = filename.endswith('.gif')
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 7 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Exception details:
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py", line 49, in combine_videos
+    video = VideoFileClip(blank_frame).set_duration(audio.duration).set_audio(audio)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 244, in ffmpeg_parse_infos
+    is_GIF = filename.endswith('.gif')
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 8 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Exception details:
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py", line 49, in combine_videos
+    video = VideoFileClip(blank_frame).set_duration(audio.duration).set_audio(audio)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 244, in ffmpeg_parse_infos
+    is_GIF = filename.endswith('.gif')
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 9 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Exception details:
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py", line 49, in combine_videos
+    video = VideoFileClip(blank_frame).set_duration(audio.duration).set_audio(audio)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 244, in ffmpeg_parse_infos
+    is_GIF = filename.endswith('.gif')
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'endswith'
+Error processing paragraph 10 in combine_videos: 'numpy.ndarray' object has no attribute 'endswith'
+Exception details:
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py", line 49, in combine_videos
+    video = VideoFileClip(blank_frame).set_duration(audio.duration).set_audio(audio)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\VideoFileClip.py", line 88, in __init__
+    self.reader = FFMPEG_VideoReader(filename, pix_fmt=pix_fmt,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 35, in __init__
+    infos = ffmpeg_parse_infos(filename, print_infos, check_duration,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\moviepy\video\io\ffmpeg_reader.py", line 244, in ffmpeg_parse_infos
+    is_GIF = filename.endswith('.gif')
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'endswith'
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\news_storyboard\services\create_scene.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Traceback (most recent call last):
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 209, in post
+    video_path, image_urls = self.start_data_collection(story_object)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py", line 221, in start_data_collection
+    manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, storyboard)
+                                                                                                               ^^^^^^^^^^
+NameError: name 'storyboard' is not defined
+C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader

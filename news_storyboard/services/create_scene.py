@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from moviepy.editor import VideoFileClip, AudioFileClip, CompositeAudioClip
+from moviepy.editor import VideoFileClip, AudioFileClip, CompositeAudioClip, ImageClip
 from moviepy.editor import concatenate_videoclips
 import os
 from django.conf import settings
@@ -160,7 +160,7 @@ def replace_background(input_video, output_video, threshold, composed_background
 
 def create_videos_from_images_and_audio(manager):
     """
-    Creates videos by combining background images, scene images, and avatar videos.
+    Creates videos by combining background images, scene images, and audio (with or without avatar videos).
     
     :param manager: Manager object containing the storyboard and other necessary information
     """
@@ -176,13 +176,20 @@ def create_videos_from_images_and_audio(manager):
             print(f"Error: Failed to compose background for paragraph {idx + 1}")
             continue
         
-        # Process video
-        input_video = os.path.join(output_dir, paragraph["video"]["avatar_path"])
-        output_video = os.path.join(output_dir, f"final_output_paragraph_{idx + 1}.mp4")
-        crop_coords = (808, 147, 256, 883)
-        placement_coords = (paragraph["video"]["x"], paragraph["video"]["y"])
-        
-        replace_background(input_video, output_video, 10, composed_background, crop_coords, placement_coords)
+        # Check if avatar is needed
+        if paragraph.get("needAvatar", False):
+            # Process video with avatar
+            input_video = os.path.join(output_dir, paragraph["video"]["avatar_path"])
+            output_video = os.path.join(output_dir, f"final_output_paragraph_{idx + 1}.mp4")
+            crop_coords = (808, 147, 256, 883)
+            placement_coords = (paragraph["video"]["x"], paragraph["video"]["y"])
+            
+            replace_background(input_video, output_video, 10, composed_background, crop_coords, placement_coords)
+        else:
+            # Create video from background image and audio
+            output_video = os.path.join(output_dir, f"final_output_paragraph_{idx + 1}.mp4")
+            audio_path = os.path.join(output_dir, paragraph["audio_path"])
+            create_video_from_image_and_audio(composed_background, audio_path, output_video)
         
         print(f"Video processing complete for paragraph {idx + 1}")
     
@@ -193,6 +200,25 @@ def create_videos_from_images_and_audio(manager):
     combine_videos(output_dir, num_paragraphs)
     
     print("Final combined video created successfully!")
+
+
+# New function to create video from image and audio
+def create_video_from_image_and_audio(image, audio_path, output_path, fps=24):
+    """
+    Creates a video from a static image and an audio file.
+    
+    :param image: The background image (numpy array)
+    :param audio_path: Path to the audio file
+    :param output_path: Path to save the output video
+    :param fps: Frames per second for the output video (default is 24)
+    """
+    audio = AudioFileClip(audio_path)
+    video = ImageClip(image).set_duration(audio.duration)
+    video = video.set_audio(audio)
+    video.fps = fps  # Set the fps for the video clip
+    video.write_videofile(output_path, codec="libx264", audio_codec="aac")
+    video.close()
+    audio.close()
 
 if __name__ == "__main__":
     create_videos_from_images_and_audio()

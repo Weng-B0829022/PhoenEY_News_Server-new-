@@ -206,11 +206,11 @@ class NewsGenVideoView(APIView):
             return JsonResponse({'error': 'Missing story_object parameter'}, status=400)
         
         # 直接執行 start_data_collection 並獲取 image_urls
-        #video_path, image_urls = self.start_data_collection(story_object)
-        image_urls = self.start_data_collection(story_object)
+        video_path, image_urls = self.start_data_collection(story_object)
+        #image_urls = self.start_data_collection(story_object)
         # 立即返回 image_urls 給前端
-        #return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls, 'video_path': video_path}, status=200)
-        return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls}, status=200)
+        return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls, 'video_path': video_path}, status=200)
+        #return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls}, status=200)
 
     def start_data_collection(self, story_object):
         
@@ -221,8 +221,8 @@ class NewsGenVideoView(APIView):
         manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, story_object)
         #video_path = combine_media(manager, {})
         # 使用 ThreadPoolExecutor 異步執行圖片和聲音生成任務
-        with ThreadPoolExecutor(max_workers=2) as executor:
-            future_img = executor.submit(execute_news_gen_img, manager, story_object, random_id)
+        with ThreadPoolExecutor(max_workers=2) as executor:  
+            future_img = executor.submit(execute_news_gen_img, manager, story_object, random_id) 
             future_voice_and_video = executor.submit(execute_news_gen_voice_and_video, manager,  story_object, random_id)
 
         # 獲取結果
@@ -231,8 +231,7 @@ class NewsGenVideoView(APIView):
             audios_path = future_voice_and_video.result()  # 等待語音生成完成，但不使用其結果
             custom_setting = {}
             video_path = combine_media(manager, random_id, custom_setting)
-            return []
-            #return video_path, image_urls
+            return video_path, image_urls
         except Exception as e:
             print(f"Error in image or voice generation: {str(e)}")
             return None

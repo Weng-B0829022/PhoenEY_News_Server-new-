@@ -14,12 +14,17 @@ class StoryboardManager:
         if initial_storyboard is None:
             initial_storyboard = {}
         
+        # 修改 initial_storyboard，確保只有前兩個段落的 needAvatar 為 True
+        if "storyboard" in initial_storyboard:
+            for i, paragraph in enumerate(initial_storyboard["storyboard"]):
+                paragraph["needAvatar"] = i < 2  # True for first two paragraphs, False for others
         
         self.storyboard = initial_storyboard or self.load_storyboard()
-        initial_storyboard['random_id'] = random_id
-        print(initial_storyboard)
+        self.storyboard['random_id'] = random_id
+        print(self.storyboard)
+        
         if not isinstance(self.storyboard, dict) or "storyboard" not in self.storyboard:
-            self.storyboard = {"title": "", "storyboard": [], random_id: random_id}
+            self.storyboard = {"title": "", "storyboard": [], "random_id": random_id}
         
         self.save_storyboard()
         
@@ -34,6 +39,9 @@ class StoryboardManager:
                 with open(self.file_path, 'r', encoding='utf-8') as file:
                     data = json.load(file)
                 if isinstance(data, dict) and "storyboard" in data:
+                    # 確保載入的 storyboard 也遵循 needAvatar 規則
+                    for i, paragraph in enumerate(data["storyboard"]):
+                        paragraph["needAvatar"] = i < 2
                     return data
                 else:
                     print(f"Warning: Loaded data is not in the correct format. Resetting to empty storyboard.")
@@ -84,10 +92,15 @@ class StoryboardManager:
                 "calculatedDuration": 0,
                 "imageDescription": "",
                 "voiceover": "",
-                "characterCount": 0
+                "characterCount": 0,
+                "needAvatar": paragraph_index < 2  # True for first two paragraphs, False for others
             }
             new_paragraph.update(new_data)
             self.storyboard["storyboard"].append(new_paragraph)
+        
+        # 確保 needAvatar 規則始終被遵守
+        self.storyboard["storyboard"][paragraph_index]["needAvatar"] = paragraph_index < 2
+        
         self.save_storyboard()
 
     def _add_audio_path(self, paragraph_index, audio_path):
@@ -105,6 +118,7 @@ class StoryboardManager:
         if paragraph_index < len(self.storyboard["storyboard"]):
             self.storyboard["storyboard"][paragraph_index]["video"] = video
             self.save_storyboard()
+
     def set_image_config(self, img_path, top_left=(0, 0), width=1024, height=1024, z_index=-1):
         self.img_config =  {
             "img_path": img_path,

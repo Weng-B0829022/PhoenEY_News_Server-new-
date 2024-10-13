@@ -46,12 +46,6 @@ def generate_voice(text, filename, save_directory):
 
 def generate_video(manager, audio_file_name, character):
     try:
-        print(f"Initializing FullBodyAvatarGenerator with audio file: {audio_file_name}")
-        generator = FullBodyAvatarGenerator(
-            api_base_ip="216.234.102.170", 
-            api_port="10639",
-        )
-
         # 從 manager 中取得 random_id
         random_id = manager.storyboard.get('random_id', '')
 
@@ -64,18 +58,32 @@ def generate_video(manager, audio_file_name, character):
         video_filename = os.path.splitext(audio_filename)[0] + '.mp4'
         
         save_path = os.path.join(save_directory, video_filename)
-        
-        video_url = generator.generate_full_body_avatar(character='woman2',
-                                                        audio_file_path=audio_file_path,
-                                                        save_path=save_path)
 
-        # 返回只包含影片檔案名稱
-        return video_filename
+        # 檢查是否需要生成人偶視頻
+        paragraph_index = int(re.search(r'\d+', audio_filename).group()) - 1
+        need_avatar = manager.storyboard['storyboard'][paragraph_index].get('needAvatar', False)
+
+        if need_avatar:
+            print(f"Initializing FullBodyAvatarGenerator with audio file: {audio_file_name}")
+            generator = FullBodyAvatarGenerator(
+                api_base_ip="216.234.102.170", 
+                api_port="10639",
+            )
+            
+            video_url = generator.generate_full_body_avatar(character='woman2',
+                                                            audio_file_path=audio_file_path,
+                                                            save_path=save_path)
+        else:
+            # 如果不需要人偶，只返回音頻文件名
+            video_url = audio_filename
+
+        # 返回只包含影片檔案名稱或音頻檔案名稱
+        return video_filename if need_avatar else audio_filename
+
     except Exception as e:
         error_message = f"Video generation failed for {audio_file_name}: {str(e)}"
         logger.error(f"Error in video generation: {error_message}")
         return None
-
 
 def run_news_gen_voice_and_video(manager, storyboard_object, random_id, character='woman1'):
     title = storyboard_object.get('title', '')
@@ -115,7 +123,11 @@ def run_news_gen_voice_and_video(manager, storyboard_object, random_id, characte
             })
             # 更新 storyboard
             manager.add_audio_path(voice_texts[idx][0], audio_file_path)
-            manager.add_video(voice_texts[idx][0], {
+            
+            # 檢查是否需要添加視頻
+            need_avatar = manager.storyboard['storyboard'][voice_texts[idx][0]].get('needAvatar', False)
+            if need_avatar:
+                manager.add_video(voice_texts[idx][0], {
                     'avatar_path': video_path,
                     'x': 0,
                     'y': 240,

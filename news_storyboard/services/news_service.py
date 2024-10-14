@@ -4,6 +4,7 @@ from .newsapi import run_newsapi
 from .news_gen import run_news_gen
 from .news_gen_img import run_news_gen_img
 from .news_gen_voice_and_video import run_news_gen_voice_and_video
+from .upload_to_drive import upload_to_drive
 import base64
 import io
 from pydub import AudioSegment
@@ -151,3 +152,19 @@ def text_to_image(text, font_path, output_path, font_size=32, padding=5, bg_colo
         print(f"File does not exist at: {output_path}")
 
     return output_path, image_width, image_height
+
+def execute_upload_to_drive(random_id):
+    file_id = upload_to_drive(random_id)
+    return {"status":"success", "file_id":file_id}
+
+def remove_generated_folder():
+    generated_path = os.path.join(settings.BASE_DIR, 'generated')
+    
+    if os.path.exists(generated_path):
+        try:
+            shutil.rmtree(generated_path)
+            print(f"'generated' folder has been successfully removed from {settings.BASE_DIR}")
+        except Exception as e:
+            print(f"Error occurred while trying to remove 'generated' folder: {e}")
+    else:
+        print(f"'generated' folder does not exist in {settings.BASE_DIR}")

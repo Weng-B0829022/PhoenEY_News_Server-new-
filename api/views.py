@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.views import View
-from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, execute_news_gen_voice_and_video, combine_media, execute_storyboard_manager
+from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, execute_news_gen_voice_and_video, combine_media, execute_storyboard_manager, execute_upload_to_drive
 import logging
 import time
 import threading
@@ -206,16 +206,16 @@ class NewsGenVideoView(APIView):
             return JsonResponse({'error': 'Missing story_object parameter'}, status=400)
         
         # 直接執行 start_data_collection 並獲取 image_urls
-        video_path, image_urls = self.start_data_collection(story_object)
+        random_id, image_urls = self.start_data_collection(story_object)
         #image_urls = self.start_data_collection(story_object)
         # 立即返回 image_urls 給前端
-        return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls, 'video_path': video_path}, status=200)
+        return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls, 'random_id': random_id}, status=200)
         #return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls}, status=200)
 
     def start_data_collection(self, story_object):
         
         # 移除最後9個元素
-        story_object['storyboard'] = story_object['storyboard'][:]
+        story_object['storyboard'] = story_object['storyboard'][-1:]
         random_id = generate_random_id()#每次生成給予專屬id
 
         manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, story_object)
@@ -230,8 +230,8 @@ class NewsGenVideoView(APIView):
             img_binary, image_urls = future_img.result()
             audios_path = future_voice_and_video.result()  # 等待語音生成完成，但不使用其結果
             custom_setting = {}
-            video_path = combine_media(manager, random_id, custom_setting)
-            return video_path, image_urls
+            combine_media(manager, random_id, custom_setting)
+            return random_id, image_urls
         except Exception as e:
             print(f"Error in image or voice generation: {str(e)}")
             return None
@@ -266,3 +266,32 @@ class GetGeneratedVideoView(View):
         else:
             logger.warning(f"Video file not found: {video_path}")
             return HttpResponseNotFound("Video not found")
+class UploadToDriveView(APIView):
+    def post(self, request):
+        random_id = request.data.get('random_id')
+        if not random_id:
+            return Response({'error': 'Missing video_path parameter'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            # 確保文件存在
+            file_paths = os.path.join(settings.MEDIA_ROOT, 'generated', random_id)
+            if not os.path.exists(file_paths):
+                return Response({'error': 'Video file not found'}, status=status.HTTP_404_NOT_FOUND)
+
+            # 調用 execute_upload_to_drive 函數
+            result = execute_upload_to_drive(file_paths)
+
+            if result['status'] == 'success':
+                return Response({
+                    'message': 'Video uploaded to Google Drive successfully',
+                    'drive_file_id': result['file_id'],
+                }, status=status.HTTP_200_OK)
+            else:
+                return Response({
+                    'error': 'Failed to upload video to Google Drive',
+                    'details': result.get('error', 'Unknown error')
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        except Exception as e:
+            logger.error(f"Error in uploading to Google Drive: {str(e)}")
+            return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

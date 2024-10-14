@@ -11,3 +11,5 @@ ffplay.exe
 ffprobe.exe
 final_output_video.mp4
 debug.log
+token.json
+credentials.json

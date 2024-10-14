@@ -4228,3 +4228,158 @@ C:\Users\翁\Desktop\新聞台\server\PhoenEY_News_Server-new-\api\views.py changed,
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.1776180267333984 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unsupported Media Type: /api/uploadVideo
+Unsupported Media Type: /api/uploadVideo
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unsupported Media Type: /api/uploadVideo
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unsupported Media Type: /api/uploadVideo
+Unsupported Media Type: /api/uploadVideo
+Unsupported Media Type: /api/uploadVideo
+Unsupported Media Type: /api/uploadVideo
+Unsupported Media Type: /api/uploadVideo
+Unsupported Media Type: /api/uploadVideo
+Not Found: /api/uploadVideo
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /api/uploadVideo
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Error in uploading to Google Drive: execute_upload_to_drive() takes 0 positional arguments but 1 was given
+Internal Server Error: /api/uploadVideo
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+Error in uploading to Google Drive: [WinError 3] 系統找不到指定的路徑。: 'm9ai6p2lqy'
+Internal Server Error: /api/uploadVideo
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+Error in uploading to Google Drive: [WinError 3] 系統找不到指定的路徑。: 'm9ai6p2lqy'
+Internal Server Error: /api/uploadVideo
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Error in uploading to Google Drive: 'file_id'
+Internal Server Error: /api/uploadVideo
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader

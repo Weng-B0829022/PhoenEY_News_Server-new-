@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.views import View
-from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, execute_news_gen_voice_and_video, combine_media, execute_storyboard_manager, execute_upload_to_drive
+from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, execute_news_gen_voice_and_video, combine_media, execute_storyboard_manager, execute_upload_to_drive, remove_generated_folder
 import logging
 import time
 import threading
@@ -215,9 +215,10 @@ class NewsGenVideoView(APIView):
     def start_data_collection(self, story_object):
         
         # 移除最後9個元素
-        story_object['storyboard'] = story_object['storyboard'][-1:]
+        story_object['storyboard'] = story_object['storyboard'][:]
         random_id = generate_random_id()#每次生成給予專屬id
-
+        #移除generated資料夾
+        remove_generated_folder()
         manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, story_object)
         #video_path = combine_media(manager, {})
         # 使用 ThreadPoolExecutor 異步執行圖片和聲音生成任務

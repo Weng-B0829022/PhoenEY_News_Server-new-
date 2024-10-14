@@ -5,7 +5,7 @@ from moviepy.editor import concatenate_videoclips
 import os
 from django.conf import settings
 
-def combine_videos(output_dir, num_paragraphs):
+def combine_videos(title, output_dir, num_paragraphs):
     """
     Combines multiple video clips into a single video file.
     
@@ -29,7 +29,7 @@ def combine_videos(output_dir, num_paragraphs):
         print("Warning: The combined video does not have audio. Creating a silent audio track.")
         final_video = final_video.set_audio(CompositeAudioClip([]))
     
-    final_output_path = os.path.join(output_dir, "final_combined_video.mp4")
+    final_output_path = os.path.join(output_dir, "final_video.mp4")
     # Write the final video to file
     final_video.write_videofile(final_output_path, codec="libx264", audio_codec="aac")
     
@@ -165,6 +165,7 @@ def create_videos_from_images_and_audio(manager):
     :param manager: Manager object containing the storyboard and other necessary information
     """
     storyboard = manager.get_storyboard()
+    title = storyboard.get('title')
     output_dir = os.path.join(settings.BASE_DIR, 'generated', storyboard['random_id'])
     
     for idx, paragraph in enumerate(storyboard["storyboard"]):
@@ -197,7 +198,7 @@ def create_videos_from_images_and_audio(manager):
 
     # Combine all videos into one final video
     num_paragraphs = len(storyboard["storyboard"])
-    combine_videos(output_dir, num_paragraphs)
+    combine_videos(title, output_dir, num_paragraphs)
     
     print("Final combined video created successfully!")
 

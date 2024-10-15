@@ -60,13 +60,14 @@ def execute_news_gen_img(manager, storyboard_object, random_id):
     
 def execute_news_gen_voice_and_video(manager, storyboard_object, random_id):
     try:
+        print(storyboard_object)
         audios_path = run_news_gen_voice_and_video(manager, storyboard_object, random_id)
 
         return audios_path
     except Exception as e:
         return [""]  # 返回一个包含空字符串的列表，表示出错
     
-def combine_media(manager, random_id, custom_setting):
+def combine_media(manager, random_id):
     #manager.custom_setting(custom_setting)
 
     #設定背景圖片座標

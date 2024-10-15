@@ -10,7 +10,7 @@ from avatar_sync_lip import FullBodyAvatarGenerator
 # Configure logger
 logger = logging.getLogger(__name__)
 
-def generate_voice(text, filename, save_directory):
+def generate_voice(text, filename, save_directory, avatar):
     try:
         # Initialize API
         api_base_ip = "216.234.102.170"
@@ -18,7 +18,7 @@ def generate_voice(text, filename, save_directory):
         api = VoiceAPI(api_base_ip=api_base_ip, api_port=api_port)
 
         # Set voice model
-        api.set_model("woman1")  # Currently only woman1 is available
+        api.set_model(avatar)  # Currently only woman1 is available
 
         # Generate voice
         audio = api.tts_generate(text)
@@ -44,7 +44,7 @@ def generate_voice(text, filename, save_directory):
         logger.error(error_message)
         return None
 
-def generate_video(manager, audio_file_name, character):
+def generate_video(manager, audio_file_name, avatar):
     try:
         # 從 manager 中取得 random_id
         random_id = manager.storyboard.get('random_id', '')
@@ -70,7 +70,7 @@ def generate_video(manager, audio_file_name, character):
                 api_port="10639",
             )
             
-            video_url = generator.generate_full_body_avatar(character='woman2',
+            video_url = generator.generate_full_body_avatar(character=avatar,
                                                             audio_file_path=audio_file_path,
                                                             save_path=save_path)
         else:
@@ -85,10 +85,12 @@ def generate_video(manager, audio_file_name, character):
         logger.error(f"Error in video generation: {error_message}")
         return None
 
-def run_news_gen_voice_and_video(manager, storyboard_object, random_id, character='woman1'):
+def run_news_gen_voice_and_video(manager, storyboard_object, random_id):
     title = storyboard_object.get('title', '')
+    avatar = storyboard_object.get('avatar', 'woman1')
     safetitle = re.sub(r'[^\w\-\. ]', '_', title)
 
+    
     voice_texts = []
     for idx, item in enumerate(storyboard_object.get('storyboard', [])):
         text = item.get('voiceover', '')
@@ -99,7 +101,7 @@ def run_news_gen_voice_and_video(manager, storyboard_object, random_id, characte
     save_directory = os.path.join(settings.MEDIA_ROOT, 'generated', random_id)
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        future_to_idx = {executor.submit(generate_voice, text, f'{safetitle}_{idx+1}.mp3', save_directory): idx
+        future_to_idx = {executor.submit(generate_voice, text, f'{safetitle}_{idx+1}.mp3', save_directory, avatar): idx
                         for idx, (_, text) in enumerate(voice_texts)}
 
         for future in concurrent.futures.as_completed(future_to_idx):
@@ -115,7 +117,7 @@ def run_news_gen_voice_and_video(manager, storyboard_object, random_id, characte
     # Generate video for each audio file and store both paths
     voice_and_video_paths = []
     for idx, audio_file_path in enumerate(audio_file_paths):
-        video_path = generate_video(manager, audio_file_path, character)
+        video_path = generate_video(manager, audio_file_path, avatar)
         if video_path:
             voice_and_video_paths.append({
                 'audios_path': audio_file_path,  # Only file name is stored
@@ -145,9 +147,9 @@ def run_news_gen_voice_and_video(manager, storyboard_object, random_id, characte
         logger.error("No videos were generated successfully.")
         return None
 
-def execute_news_gen_voice(manager, storyboard_object, random_id, character='woman1'):
+def execute_news_gen_voice(manager, storyboard_object, random_id, avatar='woman1'):
     try:
-        result = run_news_gen_voice_and_video(manager, storyboard_object, random_id, character)
+        result = run_news_gen_voice_and_video(manager, storyboard_object, random_id, avatar)
         print(result)
         return result
     except Exception as e:

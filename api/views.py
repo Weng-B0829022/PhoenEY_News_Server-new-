@@ -201,27 +201,23 @@ class NewsGenImgView(APIView):
 class NewsGenVideoView(APIView):
     def post(self, request):
         story_object = request.data.get('story_object')
-        
         if not story_object:
             return JsonResponse({'error': 'Missing story_object parameter'}, status=400)
         
         # 直接執行 start_data_collection 並獲取 image_urls
         random_id, image_urls = self.start_data_collection(story_object)
-        #image_urls = self.start_data_collection(story_object)
         # 立即返回 image_urls 給前端
         return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls, 'random_id': random_id}, status=200)
-        #return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls}, status=200)
 
     def start_data_collection(self, story_object):
         
         # 移除最後9個元素
-        story_object['storyboard'] = story_object['storyboard'][:]
+        story_object['storyboard'] = story_object['storyboard'][:-8]
         random_id = generate_random_id()#每次生成給予專屬id
         #移除generated資料夾
         remove_generated_folder()
         manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, story_object)
-        #video_path = combine_media(manager, {})
-        # 使用 ThreadPoolExecutor 異步執行圖片和聲音生成任務
+
         with ThreadPoolExecutor(max_workers=2) as executor:  
             future_img = executor.submit(execute_news_gen_img, manager, story_object, random_id) 
             future_voice_and_video = executor.submit(execute_news_gen_voice_and_video, manager,  story_object, random_id)
@@ -230,8 +226,7 @@ class NewsGenVideoView(APIView):
         try: 
             img_binary, image_urls = future_img.result()
             audios_path = future_voice_and_video.result()  # 等待語音生成完成，但不使用其結果
-            custom_setting = {}
-            combine_media(manager, random_id, custom_setting)
+            combine_media(manager, random_id)
             return random_id, image_urls
         except Exception as e:
             print(f"Error in image or voice generation: {str(e)}")

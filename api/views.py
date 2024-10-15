@@ -212,7 +212,7 @@ class NewsGenVideoView(APIView):
     def start_data_collection(self, story_object):
         
         # 移除最後9個元素
-        story_object['storyboard'] = story_object['storyboard'][:-8]
+        story_object['storyboard'] = story_object['storyboard'][:]
         random_id = generate_random_id()#每次生成給予專屬id
         #移除generated資料夾
         remove_generated_folder()

@@ -85,7 +85,7 @@ def combine_media(story_object):
             destination_path = os.path.join(settings.BASE_DIR, 'generated', str(random_id), image_name)
             shutil.copy2(source_path, destination_path)
 
-    story_object['storyboard'] = story_object['storyboard'][:1]
+    story_object['storyboard'] = story_object['storyboard'][:]
     random_id = generate_random_id()#每次生成給予專屬id
     #移除generated資料夾
     remove_generated_folder()

@@ -152,7 +152,7 @@ def generate_images_from_descriptions(title, image_descriptions, random_id):
     return image_results
 
 # 測試新聞生成邏輯
-def run_news_gen_img(manager, storyboard_object, random_id):
+def run_news_gen_img(manager, storyboard_object, random_id, coordinates):
     try:
         # 從 storyboard_object 提取圖片描述
         image_descriptions = []
@@ -174,10 +174,10 @@ def run_news_gen_img(manager, storyboard_object, random_id):
                 image_info = {
                     "img_path": image_path,
                     "url": image_url,
-                    "top-left": [234, 265],
-                    "top-right": [844, 265],
-                    "bottom-right": [844, 635],
-                    "bottom-left": [234, 635],
+                    "top_left": coordinates["top_left"],
+                    "top_right": coordinates["top_right"],
+                    "bottom_right": coordinates["bottom_right"],
+                    "bottom_left": coordinates["bottom_left"],
                     "z_index": 0
                 }
                 manager.update_paragraph(idx, {"images": [image_info]})

@@ -7,14 +7,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.views import View
-from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, execute_news_gen_voice_and_video, combine_media, execute_storyboard_manager, execute_upload_to_drive, remove_generated_folder
+from news_storyboard.services.news_service import execute_newsapi, execute_news_gen, execute_news_gen_img, combine_media, execute_upload_to_drive
 import logging
 import time
 import threading
 import traceback
-from asgiref.sync import async_to_sync
-import json
-from concurrent.futures import ThreadPoolExecutor
+
 from django.http import FileResponse, HttpResponseNotFound, HttpResponseBadRequest
 from django.conf import settings
 import os
@@ -205,32 +203,16 @@ class NewsGenVideoView(APIView):
             return JsonResponse({'error': 'Missing story_object parameter'}, status=400)
         
         # 直接執行 start_data_collection 並獲取 image_urls
-        random_id, image_urls = self.start_data_collection(story_object)
+        try:
+            random_id, image_urls = combine_media(story_object)
+        except Exception as e:
+            print(f"Error in combine_media: {str(e)}")
+            print(traceback.format_exc())
+            return JsonResponse({'error': 'Internal server error'}, status=500)
         # 立即返回 image_urls 給前端
         return JsonResponse({'message': 'Image generation completed', 'image_urls': image_urls, 'random_id': random_id}, status=200)
 
-    def start_data_collection(self, story_object):
         
-        # 移除最後9個元素
-        story_object['storyboard'] = story_object['storyboard'][:]
-        random_id = generate_random_id()#每次生成給予專屬id
-        #移除generated資料夾
-        remove_generated_folder()
-        manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, story_object)
-
-        with ThreadPoolExecutor(max_workers=2) as executor:  
-            future_img = executor.submit(execute_news_gen_img, manager, story_object, random_id) 
-            future_voice_and_video = executor.submit(execute_news_gen_voice_and_video, manager,  story_object, random_id)
-
-        # 獲取結果
-        try: 
-            img_binary, image_urls = future_img.result()
-            audios_path = future_voice_and_video.result()  # 等待語音生成完成，但不使用其結果
-            combine_media(manager, random_id)
-            return random_id, image_urls
-        except Exception as e:
-            print(f"Error in image or voice generation: {str(e)}")
-            return None
 
 class GetGeneratedVideoView(View):
     def get(self, request):
@@ -264,6 +246,7 @@ class GetGeneratedVideoView(View):
             return HttpResponseNotFound("Video not found")
 class UploadToDriveView(APIView):
     def post(self, request):
+        #return JsonResponse({'message': 'Upload to Drive completed'}, status=200)
         random_id = request.data.get('random_id')
         if not random_id:
             return Response({'error': 'Missing video_path parameter'}, status=status.HTTP_400_BAD_REQUEST)

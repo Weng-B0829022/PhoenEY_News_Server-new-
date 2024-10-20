@@ -119,13 +119,13 @@ class StoryboardManager:
             self.storyboard["storyboard"][paragraph_index]["video"] = video
             self.save_storyboard()
 
-    def set_image_config(self, img_path, top_left=(0, 0), width=1024, height=1024, z_index=-1):
+    def set_image_config(self, img_path, top_left, top_right, bottom_right, bottom_left, z_index=-1):
         self.img_config =  {
             "img_path": img_path,
-            "top-left": list(top_left),
-            "top-right": [top_left[0] + width, top_left[1]],
-            "bottom-right": [top_left[0] + width, top_left[1] + height],
-            "bottom-left": [top_left[0], top_left[1] + height],
+            "top_left": top_left,
+            "top_right": top_right,
+            "bottom_right": bottom_right,
+            "bottom_left": bottom_left,
             "z_index": z_index
         }
     def add_config_to_all_paragraphs(self):

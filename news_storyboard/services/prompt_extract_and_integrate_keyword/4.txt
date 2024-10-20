@@ -22,7 +22,7 @@ Types of derivative news articles:
 
 Choose the five most relevant types from the provided list.
 
-Generate a detailed article (300 words) and title for each selected type.
+Generate a detailed article (600 words) and title for each selected type.
 
 Based on the provided news content, please complete the following tasks:
 
@@ -42,23 +42,23 @@ Please integrate all content into a single JSON object, strictly following this 
     "articles": [
         {
             "title": "Title of the first derivative article",
-            "content": "Content of the first derivative article (about 300 words)"
+            "content": "Content of the first derivative article (about 600 words)"
         },
         {
             "title": "Title of the second derivative article",
-            "content": "Content of the second derivative article (about 300 words)"
+            "content": "Content of the second derivative article (about 600 words)"
         },
         {
             "title": "Title of the third derivative article",
-            "content": "Content of the third derivative article (about 300 words)"
+            "content": "Content of the third derivative article (about 600 words)"
         },
         {
             "title": "Title of the fourth derivative article",
-            "content": "Content of the fourth derivative article (about 300 words)"
+            "content": "Content of the fourth derivative article (about 600 words)"
         },
         {
             "title": "Title of the fifth derivative article",
-            "content": "Content of the fifth derivative article (about 300 words)"
+            "content": "Content of the fifth derivative article (about 600 words)"
         }
     ]
 }

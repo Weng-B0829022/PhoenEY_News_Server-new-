@@ -10,6 +10,7 @@ The storyboard should include:
 - The voiceover text language should match the news event language
 - Do not generate irrelevant content in the storyboard
 - The content of storyboard should start directly exectly from "1\n00:00:00,000"
+- Each Voiceover Text should have about 50 words
 
 Example storyboard:
 1

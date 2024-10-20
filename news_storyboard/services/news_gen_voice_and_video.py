@@ -85,7 +85,7 @@ def generate_video(manager, audio_file_name, avatar):
         logger.error(f"Error in video generation: {error_message}")
         return None
 
-def run_news_gen_voice_and_video(manager, storyboard_object, random_id):
+def run_news_gen_voice_and_video(manager, storyboard_object, random_id, avatar_coordinates):
     title = storyboard_object.get('title', '')
     avatar = storyboard_object.get('avatar', 'woman1')
     safetitle = re.sub(r'[^\w\-\. ]', '_', title)
@@ -131,10 +131,10 @@ def run_news_gen_voice_and_video(manager, storyboard_object, random_id):
             if need_avatar:
                 manager.add_video(voice_texts[idx][0], {
                     'avatar_path': video_path,
-                    'x': 0,
-                    'y': 240,
-                    'width': '1024',
-                    'height': '768',
+                    "top_left": avatar_coordinates["top_left"],
+                    "top_right": avatar_coordinates["top_right"],
+                    "bottom_right": avatar_coordinates["bottom_right"],
+                    "bottom_left": avatar_coordinates["bottom_left"],
                     'z_index': 1,
                 })
 

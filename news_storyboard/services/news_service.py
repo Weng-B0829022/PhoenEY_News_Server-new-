@@ -5,10 +5,6 @@ from .news_gen import run_news_gen
 from .news_gen_img import run_news_gen_img
 from .news_gen_voice_and_video import run_news_gen_voice_and_video
 from .upload_to_drive import upload_to_drive
-import base64
-import io
-from pydub import AudioSegment
-import re 
 import os 
 from django.conf import settings
 from .create_scene import create_videos_from_images_and_audio
@@ -18,6 +14,10 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 import os
+import random
+import string
+from concurrent.futures import ThreadPoolExecutor
+from .config import HALF_CONFIG, FULL_CONFIG
 
 def execute_newsapi(keyword):
     try:
@@ -33,9 +33,9 @@ def execute_news_gen():
     except Exception as e:
         return {"status": "error", "message": str(e)}
     
-def execute_news_gen_img(manager, storyboard_object, random_id):
+def execute_news_gen_img(manager, storyboard_object, random_id, scene_coordinates):
     try:
-        result = run_news_gen_img(manager, storyboard_object, random_id)
+        result = run_news_gen_img(manager, storyboard_object, random_id, scene_coordinates)
         
         # 处理结果，分离 URL 和图片数据
         processed_result = []
@@ -58,47 +58,110 @@ def execute_news_gen_img(manager, storyboard_object, random_id):
         print(str(e))
         return (None, {"status": "error", "message": str(e)})
     
-def execute_news_gen_voice_and_video(manager, storyboard_object, random_id):
+def execute_news_gen_voice_and_video(manager, storyboard_object, random_id, avatar_coordinates):
     try:
         print(storyboard_object)
-        audios_path = run_news_gen_voice_and_video(manager, storyboard_object, random_id)
+        audios_path = run_news_gen_voice_and_video(manager, storyboard_object, random_id, avatar_coordinates)
 
         return audios_path
     except Exception as e:
         return [""]  # 返回一个包含空字符串的列表，表示出错
+
+def combine_media(story_object):
+    def generate_random_id(length=10):
+        """生成指定長度的隨機字母數字字符串"""
+        return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
+
+    def setup_image(manager, random_id, image_name, top_left, top_right, bottom_right, bottom_left, z_index, copy_image=True):
+        # Set the image configuration
+        manager.set_image_config(image_name, top_left, top_right, bottom_right, bottom_left, z_index)
+        
+        # Add the configuration to all paragraphs
+        manager.add_config_to_all_paragraphs()
+        
+        if copy_image:
+            # Copy the background image to the output directory
+            source_path = os.path.join(settings.BASE_DIR, image_name)
+            destination_path = os.path.join(settings.BASE_DIR, 'generated', str(random_id), image_name)
+            shutil.copy2(source_path, destination_path)
+
+    story_object['storyboard'] = story_object['storyboard'][:1]
+    random_id = generate_random_id()#每次生成給予專屬id
+    #移除generated資料夾
+    remove_generated_folder()
+    manager = execute_storyboard_manager(os.path.join(settings.MEDIA_ROOT, 'generated', random_id), random_id, story_object)
     
-def combine_media(manager, random_id):
-    #manager.custom_setting(custom_setting)
-
-    #設定背景圖片座標
-    manager.set_image_config("background.webp", top_left=(0, 0), width=1024, height=1024, z_index=-1)
-    manager.add_config_to_all_paragraphs()#移動背景圖片
-    shutil.copy2(os.path.join(settings.BASE_DIR, 'background.webp'), os.path.join(settings.BASE_DIR, 'generated', str(random_id), 'background.webp'))
+    config = HALF_CONFIG if manager.storyboard['avatarType'] == 'half' else FULL_CONFIG
+    #設定影片尺寸
+    canvas_size = config['canvas_size']
+    # 定義圖片在影片各個scene中的坐標
+    scene_place_coordinates = config['scene_place_coordinates']
+    #avatar位置
+    avatar_place_coordinates = config['avatar_place_coordinates']
+    #欲裁減avatar位置x, y, w, h
+    crop_coords = config['crop_coords']
     
-    #設定logo座標
-    manager.set_image_config("logo.png", top_left=(40, 40), width=100, height=100, z_index=100)
-    manager.add_config_to_all_paragraphs()#移動logo
-    shutil.copy2(os.path.join(settings.BASE_DIR, 'logo.png'), os.path.join(settings.BASE_DIR, 'generated', str(random_id), 'logo.png'))
-
-    #標題文字
-    #chinese_text = "你好"#manager.storyboard['title']
-    #print(text_to_image(chinese_text, os.path.join(settings.BASE_DIR,"LXGWWenKaiMonoTC-Bold.ttf"), os.path.join(settings.BASE_DIR, 'title.png'), padding=5))
-    #manager.set_image_config("title.png", top_left=(140, 40), width=400, height=100, z_index=100)
-    #manager.add_config_to_all_paragraphs()
 
 
-    video_paths = create_videos_from_images_and_audio(manager)
-    #return video_paths.split('/')[1]
+    with ThreadPoolExecutor(max_workers=2) as executor:  
+        future_img = executor.submit(execute_news_gen_img, manager, manager.storyboard, random_id, scene_place_coordinates) 
+        future_voice_and_video = executor.submit(execute_news_gen_voice_and_video, manager, manager.storyboard, random_id, avatar_place_coordinates)
+
+    # 獲取結果 
+    try: # 選擇配置
+        
+        #設定背景
+        setup_image(manager, 
+                    random_id, 
+                    config['background']['file'], 
+                    config['background']['top_left'],
+                    config['background']['top_right'],
+                    config['background']['bottom_right'],
+                    config['background']['bottom_left'],
+                    config['background']['z_index'], 
+                    copy_image=True)
+        #設定logo
+        #setup_image(manager, random_id, "logo.png", top_left=(40, 40), width=100, height=100, z_index=100, copy_image=True)
+        #設定標題
+        #setup_image(manager, random_id, "title.png", top_left=(140, 40), width=400, height=100, z_index=100, copy_image=True)
+
+        #標題文字生成
+        title_img_path = text_to_image(
+            manager.storyboard['title'], 
+            os.path.join(settings.BASE_DIR, "LXGWWenKaiMonoTC-Bold.ttf"),
+            os.path.join(settings.BASE_DIR, 'generated', str(random_id), "title.png"),
+            padding=5
+        )
+        #設定title
+        setup_image(manager, random_id, 
+                    "title.png", 
+                    config['title']['top_left'],
+                    config['title']['top_right'],
+                    config['title']['bottom_right'],
+                    config['title']['bottom_left'],
+                    config['title']['z_index'], 
+                    copy_image=False)
+        img_binary, image_urls = future_img.result()
+        audios_path = future_voice_and_video.result()  # 等待語音生成完成，但不使用其結果
+        video_paths = create_videos_from_images_and_audio(manager, canvas_size, crop_coords)
+        #return video_paths.split('/')[1]
+        return random_id, image_urls
+    except Exception as e:
+        print(f"Error in image or voice generation: {str(e)}")
+        return None
+    #設定背景
+    
 
 def execute_storyboard_manager(file_path, random_id, initial_storyboard=None):
     return StoryboardManager(file_path, random_id, initial_storyboard)
 
-def text_to_image(text, font_path, output_path, font_size=32, padding=5, bg_color=(255, 255, 255, 0), text_color=(0, 0, 0, 255)):
-    print(f"Starting text_to_image function")
-    print(f"Text: {text}")
-    print(f"Font path: {font_path}")
-    print(f"Output path: {output_path}")
-
+def text_to_image(text, font_path, output_path, font_size=32, padding=5, bg_color=(255, 255, 255, 0), text_color=(255, 255, 255, 255)):
+    # 使用絕對路徑
+    absolute_output_path = os.path.abspath(output_path)
+    
+    # 創建完整的目錄結構
+    os.makedirs(os.path.dirname(absolute_output_path), exist_ok=True)
+    
     # 檢查字體文件是否存在
     if not os.path.exists(font_path):
         raise FileNotFoundError(f"Font file not found: {font_path}")
@@ -130,29 +193,14 @@ def text_to_image(text, font_path, output_path, font_size=32, padding=5, bg_colo
     draw.text((padding, padding), text, font=font, fill=text_color)
     print("Text drawn on image")
 
-    # 將 PIL 圖像轉換為 OpenCV 格式
-    opencv_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGBA2BGRA)
-
-    # 確保輸出目錄存在
-
-    print(f"Output directory created/verified: {os.path.dirname(output_path)}")
-
-    # 保存圖像
+    # 直接保存 PIL 图像
     try:
-        cv2.imwrite(output_path, opencv_image)
-        print(f"Image saved successfully to: {output_path}")
+        pil_image.save(absolute_output_path, format='PNG')
+        print(f"Image saved successfully to: {absolute_output_path}")
     except Exception as e:
         print(f"Error saving image: {str(e)}")
         raise
-
-    # 驗證文件是否確實被創建
-    if os.path.exists(output_path):
-        print(f"File exists at: {output_path}")
-        print(f"File size: {os.path.getsize(output_path)} bytes")
-    else:
-        print(f"File does not exist at: {output_path}")
-
-    return output_path, image_width, image_height
+    return absolute_output_path, image_width, image_height
 
 def execute_upload_to_drive(random_id):
     file_id = upload_to_drive(random_id)

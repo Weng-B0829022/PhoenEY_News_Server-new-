@@ -85,7 +85,7 @@ def combine_media(story_object):
             destination_path = os.path.join(settings.BASE_DIR, 'generated', str(random_id), image_name)
             shutil.copy2(source_path, destination_path)
 
-    story_object['storyboard'] = story_object['storyboard'][:]
+    story_object['storyboard'] = story_object['storyboard'][:1]
     random_id = generate_random_id()#每次生成給予專屬id
     #移除generated資料夾
     remove_generated_folder()
@@ -128,7 +128,7 @@ def combine_media(story_object):
         #標題文字生成
         title_img_path = text_to_image(
             manager.storyboard['title'], 
-            os.path.join(settings.BASE_DIR, "LXGWWenKaiMonoTC-Bold.ttf"),
+            os.path.join(settings.BASE_DIR, 'font', "NotoSansTC-Bold.ttf"),
             os.path.join(settings.BASE_DIR, 'generated', str(random_id), "title.png"),
             padding=5
         )
@@ -155,7 +155,7 @@ def combine_media(story_object):
 def execute_storyboard_manager(file_path, random_id, initial_storyboard=None):
     return StoryboardManager(file_path, random_id, initial_storyboard)
 
-def text_to_image(text, font_path, output_path, font_size=32, padding=5, bg_color=(255, 255, 255, 0), text_color=(255, 255, 255, 255)):
+def text_to_image(text, font_path, output_path, font_size=32, padding=0, bg_color=(255, 255, 255, 0), text_color=(255, 255, 255, 255)):
     # 使用絕對路徑
     absolute_output_path = os.path.abspath(output_path)
     
@@ -168,6 +168,7 @@ def text_to_image(text, font_path, output_path, font_size=32, padding=5, bg_colo
 
     # 設置字體
     try:
+        # Load a bold font if available
         font = ImageFont.truetype(font_path, font_size)
         print("Font loaded successfully")
     except Exception as e:
@@ -175,9 +176,9 @@ def text_to_image(text, font_path, output_path, font_size=32, padding=5, bg_colo
         raise
 
     # 獲取文字大小
-    left, top, right, bottom = font.getbbox(text)
-    text_width = right - left
-    text_height = bottom - top
+    bbox = font.getbbox(text)
+    text_width = bbox[2] - bbox[0]
+    text_height = bbox[3] - bbox[1]
     print(f"Text dimensions: {text_width}x{text_height}")
 
     # 創建一個比文字稍大的 PIL 圖像
@@ -190,7 +191,9 @@ def text_to_image(text, font_path, output_path, font_size=32, padding=5, bg_colo
     draw = ImageDraw.Draw(pil_image)
 
     # 在圖像上繪製文字（位置考慮內邊距）
-    draw.text((padding, padding), text, font=font, fill=text_color)
+    # Adjust the text position to move it upwards
+    text_y_position = padding - bbox[1]  # Adjust by the top of the bounding box
+    draw.text((padding, text_y_position), text, font=font, fill=text_color)
     print("Text drawn on image")
 
     # 直接保存 PIL 图像

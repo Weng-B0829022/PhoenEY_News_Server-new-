@@ -74,43 +74,30 @@ def compose_background_with_scenes(output_dir, images, canvas_size):
             continue
         
         # Get coordinates
-        top_left = img_info["top_left"]
-        top_right = img_info["top_right"]
-        bottom_right = img_info["bottom_right"]
-        bottom_left = img_info["bottom_left"]
+        tl = img_info["top_left"]
+        tr = img_info["top_right"]
+        br = img_info["bottom_right"]
+        bl = img_info["bottom_left"]
         
-        # Calculate the dimensions of the warped image
-        width = int(max(np.linalg.norm(np.array(top_right) - np.array(top_left)),
-                        np.linalg.norm(np.array(bottom_right) - np.array(bottom_left))))
-        height = int(max(np.linalg.norm(np.array(bottom_left) - np.array(top_left)),
-                         np.linalg.norm(np.array(bottom_right) - np.array(top_right))))
-        
-        if width <= 0 or height <= 0:
-            print(f"Warning: Invalid dimensions for image {img_path}. Skipping.")
-            continue
-        
-        # Resize image if necessary
-        if img.shape[:2] != (height, width):
-            img = cv2.resize(img, (width, height))
-        
-        # Create perspective transform
-        src_pts = np.array([[0, 0], [width-1, 0], [width-1, height-1], [0, height-1]], dtype="float32")
-        dst_pts = np.array([top_left, top_right, bottom_right, bottom_left], dtype="float32")
+        # Create a perspective transform matrix
+        src_pts = np.array([[0, 0], [img.shape[1]-1, 0], [img.shape[1]-1, img.shape[0]-1], [0, img.shape[0]-1]], dtype="float32")
+        dst_pts = np.array([tl, tr, br, bl], dtype="float32")
         M = cv2.getPerspectiveTransform(src_pts, dst_pts)
         
         # Warp the image
-        warped = cv2.warpPerspective(img, M, (canvas_size[0], canvas_size[1]))
+        warped_img = cv2.warpPerspective(img, M, (canvas_size[0], canvas_size[1]), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_TRANSPARENT)
         
         # Create a mask for the warped image
-        mask = warped[:,:,3] / 255.0
+        mask = warped_img[:,:,3] / 255.0
         mask = np.dstack([mask]*3)
         
         # Blend the warped image onto the canvas
         canvas_rgb = canvas[:,:,:3]
-        canvas[:,:,:3] = warped[:,:,:3] * mask + canvas_rgb * (1 - mask)
+        warped_img_rgb = warped_img[:,:,:3]
+        canvas[:,:,:3] = warped_img_rgb * mask + canvas_rgb * (1 - mask)
         
         # Update alpha channel
-        canvas[:,:,3] = np.maximum(canvas[:,:,3], warped[:,:,3])
+        canvas[:,:,3] = np.maximum(canvas[:,:,3], warped_img[:,:,3])
     
     return cv2.cvtColor(canvas, cv2.COLOR_RGBA2RGB)
 

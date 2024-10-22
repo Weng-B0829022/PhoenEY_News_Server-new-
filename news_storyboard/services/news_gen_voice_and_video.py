@@ -6,6 +6,7 @@ import concurrent.futures
 import re
 import io
 from avatar_sync_lip import FullBodyAvatarGenerator
+import time 
 
 # Configure logger
 logger = logging.getLogger(__name__)
@@ -20,8 +21,11 @@ def generate_voice(text, filename, save_directory, avatar):
         # Set voice model
         api.set_model(avatar)  # Currently only woman1 is available
 
+        # Introduce a delay of 1 second
+        time.sleep(2)
+
         # Generate voice
-        audio = api.tts_generate(text)
+        audio = api.tts_generate(text[:])
 
         # Save the audio to a BytesIO object
         audio_buffer = io.BytesIO()
@@ -107,7 +111,7 @@ def run_news_gen_voice_and_video(manager, storyboard_object, random_id, avatar_c
         for future in concurrent.futures.as_completed(future_to_idx):
             idx = future_to_idx[future]
             result = future.result()
-            print(future, ": finished")
+            #print(future, ": finished")
             if result:
                 results[idx] = result  # Now this will be the file name
 

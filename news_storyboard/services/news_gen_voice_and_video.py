@@ -19,13 +19,18 @@ def generate_voice(text, filename, save_directory, avatar):
         api = VoiceAPI(api_base_ip=api_base_ip, api_port=api_port)
 
         # Set voice model
-        api.set_model(avatar)  # Currently only woman1 is available
+        api.set_model(avatar)
 
-        # Introduce a delay of 1 second
+        # Introduce a delay of 2 seconds
         time.sleep(2)
 
+        # 過濾掉包含英文字母的單詞
+        filtered_text = ''.join(c for c in text if not (c.isalpha() and ord(c) < 128))
+        print(filtered_text)
         # Generate voice
-        audio = api.tts_generate(text[:])
+        print(f"Attempting to generate voice for text: {filtered_text[:100]}...")
+        audio = api.tts_generate(filtered_text)
+        print("Voice generation successful")
 
         # Save the audio to a BytesIO object
         audio_buffer = io.BytesIO()
@@ -46,6 +51,11 @@ def generate_voice(text, filename, save_directory, avatar):
     except Exception as e:
         error_message = f"Voice generation failed: {str(e)}"
         logger.error(error_message)
+        # Log more details about the request
+        logger.error(f"Failed request details - Text: {filtered_text[:100]}..., Avatar: {avatar}")
+        print(error_message)
+        # Log more details about the request
+        print(f"Failed request details - Text: {filtered_text[:100]}..., Avatar: {avatar}")
         return None
 
 def generate_video(manager, audio_file_name, avatar):
@@ -101,22 +111,38 @@ def run_news_gen_voice_and_video(manager, storyboard_object, random_id, avatar_c
         if text:
             voice_texts.append((idx, text))
 
-    results = [None] * len(voice_texts)  # Pre-allocate the results list
+    results = [None] * len(voice_texts)
     save_directory = os.path.join(settings.MEDIA_ROOT, 'generated', random_id)
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         future_to_idx = {executor.submit(generate_voice, text, f'{safetitle}_{idx+1}.mp3', save_directory, avatar): idx
                         for idx, (_, text) in enumerate(voice_texts)}
 
-        for future in concurrent.futures.as_completed(future_to_idx):
-            idx = future_to_idx[future]
-            result = future.result()
-            #print(future, ": finished")
-            if result:
-                results[idx] = result  # Now this will be the file name
+        try:
+            for future in concurrent.futures.as_completed(future_to_idx):
+                idx = future_to_idx[future]
+                try:
+                    result = future.result()
+                    time.sleep(0.5)
+                    if result:
+                        results[idx] = result  # Now this will be the file name
+                    else:
+                        logger.error(f"Voice generation failed for index {idx}")
+                        raise Exception(f"Voice generation failed for index {idx}")
+                except Exception as e:
+                    logger.error(f"Error processing voice generation for index {idx}: {str(e)}")
+                    raise
+
+        except Exception as e:
+            logger.error(f"Error in voice generation process: {str(e)}")
+            return None
 
     # Remove any None values (failed generations)
     audio_file_paths = [r for r in results if r is not None]
+
+    if not audio_file_paths:
+        logger.error("No audio files were generated successfully.")
+        return None
 
     # Generate video for each audio file and store both paths
     voice_and_video_paths = []

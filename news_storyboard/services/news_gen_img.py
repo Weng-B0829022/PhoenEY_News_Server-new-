@@ -11,6 +11,8 @@ import threading
 import re
 import concurrent.futures
 from collections import OrderedDict
+from news_storyboard.views import log_and_print
+from datetime import datetime
 
 load_dotenv(os.path.join(settings.BASE_DIR, '.env'))
 # 設定 logger
@@ -136,7 +138,7 @@ def generate_images_from_descriptions(title, image_descriptions, random_id):
         finally:
             with progress_lock:
                 progress_counter += 1
-                print(f"進度: {progress_counter}/{total_images} ({progress_counter/total_images*100:.2f}%)")
+                log_and_print(f"圖片生成進度: {progress_counter}/{total_images}")
         return idx, None
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
@@ -154,22 +156,22 @@ def generate_images_from_descriptions(title, image_descriptions, random_id):
 # 測試新聞生成邏輯
 def run_news_gen_img(manager, storyboard_object, random_id, coordinates):
     try:
-        # 從 storyboard_object 提取圖片描述
+        log_and_print("開始生成新聞圖片")
+        
         image_descriptions = []
         title = storyboard_object.get('title')
         for idx, item in enumerate(storyboard_object.get('storyboard', [])):
             description = item.get('imageDescription')
             if description:
-                # 翻譯為英文
+                log_and_print(f"開始處理 Paragraph {idx + 1} 的圖片")
                 translated_description = translate_to_english(description)
                 image_descriptions.append((idx, translated_description))
 
-        # 根據圖片描述生成圖片
         image_results = generate_images_from_descriptions(title, [desc for _, desc in image_descriptions], random_id)
         
-        # 更新 storyboard
         for (idx, _), result in zip(image_descriptions, image_results):
             if result:
+                log_and_print(f"成功生成 Paragraph {idx + 1} 的圖片")
                 image_url, image_path = result
                 image_info = {
                     "img_path": image_path,
@@ -182,13 +184,13 @@ def run_news_gen_img(manager, storyboard_object, random_id, coordinates):
                 }
                 manager.update_paragraph(idx, {"images": [image_info]})
         
-        # 等待所有更新完成
         manager.wait_for_queue()
+        log_and_print("完成所有圖片生成")
         
         return image_results 
 
     except Exception as e:
-        logger.error(f"An unexpected error occurred: {str(e)}")
+        log_and_print(f"圖片生成過程中發生錯誤: {str(e)}")
         return []
 
 if __name__ == '__main__':

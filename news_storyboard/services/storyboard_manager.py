@@ -21,7 +21,7 @@ class StoryboardManager:
         
         self.storyboard = initial_storyboard or self.load_storyboard()
         self.storyboard['random_id'] = random_id
-        print(self.storyboard)
+        #print(self.storyboard)
         
         if not isinstance(self.storyboard, dict) or "storyboard" not in self.storyboard:
             self.storyboard = {"title": "", "storyboard": [], "random_id": random_id}

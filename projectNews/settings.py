@@ -18,18 +18,34 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{asctime} {levelname} {module} {message}',
+            'style': '{',
+        },
+    },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
         },
         'file': {
             'class': 'logging.FileHandler',
             'filename': 'debug.log',
+            'formatter': 'verbose',
+            'encoding': 'utf-8',  # 添加編碼設置
         },
     },
-    'root': {
-        'handlers': ['console', 'file'],
-        'level': 'ERROR',
+    'loggers': {
+        '': {  # 根記錄器
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        },
+        'news_storyboard': {  # 為 news_storyboard 應用添加特定的記錄器
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
     },
 }
 # Quick-start development settings - unsuitable for production
@@ -174,3 +190,4 @@ DATABASES = {
         'PORT': '5433',
     }
 }'''
+

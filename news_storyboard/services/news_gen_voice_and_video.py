@@ -7,9 +7,12 @@ import re
 import io
 from avatar_sync_lip import FullBodyAvatarGenerator
 import time 
+from datetime import datetime
+from news_storyboard.views import log_and_print
 
 # Configure logger
 logger = logging.getLogger(__name__)
+
 
 def generate_voice(text, filename, save_directory, avatar):
     try:
@@ -26,11 +29,11 @@ def generate_voice(text, filename, save_directory, avatar):
 
         # 過濾掉包含英文字母的單詞
         filtered_text = ''.join(c for c in text if not (c.isalpha() and ord(c) < 128))
-        print(filtered_text)
+        #print(filtered_text)
         # Generate voice
-        print(f"Attempting to generate voice for text: {filtered_text[:100]}...")
+        #print(f"Attempting to generate voice for text: {filtered_text[:100]}...")
         audio = api.tts_generate(filtered_text)
-        print("Voice generation successful")
+        #print("Voice generation successful")
 
         # Save the audio to a BytesIO object
         audio_buffer = io.BytesIO()
@@ -44,18 +47,14 @@ def generate_voice(text, filename, save_directory, avatar):
         with open(file_path, 'wb') as f:
             f.write(audio_buffer.getvalue())
 
-        logger.info(f"Audio file saved: {file_path}")
+        log_and_print(f"成功獲取音檔: {filename}")
 
         # Return only the filename instead of the full path
         return filename
     except Exception as e:
         error_message = f"Voice generation failed: {str(e)}"
-        logger.error(error_message)
-        # Log more details about the request
-        logger.error(f"Failed request details - Text: {filtered_text[:100]}..., Avatar: {avatar}")
-        print(error_message)
-        # Log more details about the request
-        print(f"Failed request details - Text: {filtered_text[:100]}..., Avatar: {avatar}")
+        log_and_print(error_message)
+        log_and_print(f"Failed request details - Text: {filtered_text[:100]}..., Avatar: {avatar}")
         return None
 
 def generate_video(manager, audio_file_name, avatar):
@@ -78,7 +77,7 @@ def generate_video(manager, audio_file_name, avatar):
         need_avatar = manager.storyboard['storyboard'][paragraph_index].get('needAvatar', False)
 
         if need_avatar:
-            print(f"Initializing FullBodyAvatarGenerator with audio file: {audio_file_name}")
+            log_and_print(f"開始使用音檔生成影片: {audio_file_name}")
             generator = FullBodyAvatarGenerator(
                 api_base_ip="216.234.102.170", 
                 api_port="10639",
@@ -87,6 +86,7 @@ def generate_video(manager, audio_file_name, avatar):
             video_url = generator.generate_full_body_avatar(character=avatar,
                                                             audio_file_path=audio_file_path,
                                                             save_path=save_path)
+            log_and_print(f"成功生成影片: {video_filename}")
         else:
             # 如果不需要人偶，只返回音頻文件名
             video_url = audio_filename
@@ -96,7 +96,7 @@ def generate_video(manager, audio_file_name, avatar):
 
     except Exception as e:
         error_message = f"Video generation failed for {audio_file_name}: {str(e)}"
-        logger.error(f"Error in video generation: {error_message}")
+        log_and_print(error_message)
         return None
 
 def run_news_gen_voice_and_video(manager, storyboard_object, random_id, avatar_coordinates):
@@ -179,12 +179,10 @@ def run_news_gen_voice_and_video(manager, storyboard_object, random_id, avatar_c
 
 def execute_news_gen_voice(manager, storyboard_object, random_id, avatar='woman1'):
     try:
-        result = run_news_gen_voice_and_video(manager, storyboard_object, random_id, avatar)
-        print(result)
-        return result
+        return run_news_gen_voice_and_video(manager, storyboard_object, random_id, avatar)
     except Exception as e:
-        logger.error(f"An unexpected error occurred: {str(e)}")
+        log_and_print(f"An unexpected error occurred: {str(e)}")
         return None
 
 if __name__ == '__main__':
-    video_path = execute_news_gen_voice()
+    execute_news_gen_voice()

@@ -6200,3 +6200,7 @@ C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_stor
 Watching for file changes with StatReloader
 C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\storyboard_manager.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Unauthorized: /api/execute-news-gen-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\config.py changed, reloading.
+Watching for file changes with StatReloader

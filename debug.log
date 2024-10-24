@@ -6176,3 +6176,27 @@ Internal Server Error: /api/uploadVideo
 Error in uploading to Google Drive: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
 Internal Server Error: /api/uploadVideo
 C:\Users\¯Î\Desktop\news\server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+Building prefix dict from C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\venv\Lib\site-packages\jieba\dict.txt ...
+Loading model from cache C:\Users\orderble\AppData\Local\Temp\jieba.cache
+Loading model cost 1.14414381980896 seconds.
+Prefix dict has been built succesfully.
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\news_service.py changed, reloading.
+Watching for file changes with StatReloader
+Error in uploading to Google Drive: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+Internal Server Error: /api/uploadVideo
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\storyboard_manager.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\storyboard_manager.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+Watching for file changes with StatReloader
+Internal Server Error: /api/execute-news-gen-video
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\storyboard_manager.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\upload_to_drive.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\orderble\Desktop\PhoenEY_News_server\PhoenEY_News_Server-new-\news_storyboard\services\storyboard_manager.py changed, reloading.
+Watching for file changes with StatReloader
